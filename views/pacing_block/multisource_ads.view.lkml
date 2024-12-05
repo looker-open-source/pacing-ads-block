@@ -30,31 +30,39 @@ view: multisource_ads {
 
 datagroup_trigger: daily
   }
-
+drill_fields: [details*]
 dimension: primary_key {
+  hidden: yes
   primary_key: yes
 }
 
   dimension: partition_date_date {
     label: "Date"
     type: date
-    description: "Partitioned date"
+    description: "Date"
   }
 
   dimension: ad_account_id {
+    group_label: "ID's"
     description: "The ID number of your ad account, which groups your advertising activity. Your ad account includes your campaigns, ads and billing."
   }
   dimension: ad_account_name {
     description: "Name of your ad account"
   }
   dimension: campaign_id {
+    group_label: "ID's"
     description: "ID of the campaign"
     type: number
   }
   dimension: campaign_name {
     description: "Name of the campaign"
+    link: {
+      label: "Campaign Metrics Explore"
+      url: "/explore/pacing_block/multisource_ads?fields=multisource_ads.partition_date_date, multisource_ads.revenue, multisource_ads.spend&f[multisource_ads.campaign_name]={{ value }}&sorts=multisource_ads.partition_date_date+desc&limit=500"
+    }
   }
   dimension: ad_set_id {
+    group_label: "ID's"
     description: "The unique ID of the ad set you're viewing in reporting."
     type: number
   }
@@ -62,9 +70,14 @@ dimension: primary_key {
     description: "The name of the ad set you're viewing in reporting."
   }
   dimension: ad_source {
-    description: "Dummy data, using just facebook at the moment"
+    description: "Ads Source Name"
+    link: {
+      label: "Ad Source Metrics Explore"
+      url: "/explore/pacing_block/multisource_ads?fields=multisource_ads.partition_date_date, multisource_ads.revenue, multisource_ads.spend&f[multisource_ads.ad_source]={{ value }}&sorts=multisource_ads.partition_date_date+desc&limit=500"
+    }
   }
   dimension: ad_id {
+    group_label: "ID's"
     description: "The ID number of your ad"
     type: number
   }
@@ -91,6 +104,7 @@ dimension: primary_key {
   dimension: total_revenue {
     hidden: yes
     description: "Revenue"
+    value_format: "$#,##0.00"
     type: number
   }
   dimension: total_conversions {
@@ -172,32 +186,60 @@ dimension: primary_key {
     type: sum
     sql: ${total_spent} ;;
     value_format: "$#,##0.00"
+    drill_fields: [ad_source,campaign_name, ad_set_name, ad_name,spend,roas]
+    link: {
+      label: "Explore Top 20 Results"
+      url: "{{ link }}&limit=20"
+    }
   }
   measure: impressions {
     description: "Total number of Impressions"
     type: sum
     sql: ${total_impressions} ;;
+    drill_fields: [campaign_name, ad_set_name, ad_name,impressions,CTR]
+    link: {
+      label: "Explore Top 20 Results"
+      url: "{{ link }}&limit=20"
+    }
   }
   measure: clicks {
     description: "Total Number of Clicks"
     type: sum
     sql: ${total_clicks} ;;
+    drill_fields: [campaign_name, ad_set_name, ad_name,clicks,CPC]
+    link: {
+      label: "Explore Top 20 Results"
+      url: "{{ link }}&limit=20"
+    }
   }
   measure: revenue {
     description: "Total Revenue"
     type: sum
     sql: ${total_revenue} ;;
+    value_format: "$#,##0.00"
+    drill_fields: [campaign_name, ad_account_name, ad_name, ad_source, revenue,]
+    link: {
+      label: "Explore Top 20 Results"
+      url: "{{ link }}&limit=20"
+    }
   }
   measure: conversions {
     description: "Total Conversions"
     type: sum
     sql: ${total_conversions} ;;
+    drill_fields: [campaign_name, ad_set_name, ad_name,conversions,CPA]
+    link: {
+      label: "Explore Top 20 Results"
+      url: "{{ link }}&limit=20"
+    }
+
   }
   measure: CTR {
     description: "Click-through rate value"
     type: number
     sql: (${clicks}/${impressions}) ;;
     value_format: "#0.00%"
+
   }
   measure: CPM {
     description: "Cost per Mille"
@@ -225,9 +267,15 @@ dimension: primary_key {
     sql: (${conversions}/${impressions}) ;;
     hidden: no
   }
-
+  measure: CPA {
+    description: "Cost per Acquisition"
+    type: number
+    sql: ${spend}/${conversions} ;;
+    value_format: "$#,##0.00"
+  }
   measure: campaign_performance_metric {
     type: number
+    description: "It displays the selected Campaign Performance Metric"
     hidden: no
     label_from_parameter: KPI_select
     sql:
@@ -252,24 +300,43 @@ dimension: primary_key {
 
   # --- Goals ---
   measure: conversions_goal{
+    description: "Field used to set conversions goal"
     hidden: no
     type: number
     sql: {% parameter set_conversions_goal %} ;;
   }
   measure: clicks_goal {
+    description: "Field used to set clicks goal"
     hidden: no
     type: number
     sql: {% parameter set_clicks_goal %} ;;
 
   }
   measure: impressions_goal{
+    description: "Field used to set impressions goal"
     hidden: no
     type: number
     sql: {% parameter set_impressions_goal %} ;;
   }
   measure: cost_goal {
+    description: "Field used to set impressions"
     hidden: no
     type: number
     sql: {% parameter set_cost_goal %};;
   }
+  measure: count {
+    description: "Count of records"
+    type: count
+  }
+  set: details {
+    fields: [
+      campaign_name,
+      ad_set_name,
+      ad_name,
+      ad_source,
+      ad_account_name,
+      count
+    ]
+  }
+
 }
