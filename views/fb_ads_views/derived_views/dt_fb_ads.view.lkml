@@ -48,6 +48,7 @@ sql:
     {% endif %}
 
         ;;
+    datagroup_trigger: daily
   }
   dimension: partition_date_date {
     description: "Partitioned date"

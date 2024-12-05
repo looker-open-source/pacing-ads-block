@@ -5,7 +5,7 @@ view: multisource_ads {
 
   derived_table: {
     sql:
-  WITH blank_query AS (SELECT "" as primary_key,
+  , blank_query AS (SELECT "" as primary_key,
   CAST("2023-10-14T22:11:20+0000"  AS TIMESTAMP) AS partition_date_date,
   "" AS ad_account_id,
   "" AS ad_account_name,
@@ -28,6 +28,7 @@ view: multisource_ads {
       UNION ALL
   SELECT  GENERATE_UUID() AS primary_key,  * FROM ${dt_google_ads.SQL_TABLE_NAME} WHERE "@{GADS_DATASET_NAME}" != "" ;;
 
+datagroup_trigger: daily
   }
 
 dimension: primary_key {
@@ -214,7 +215,14 @@ dimension: primary_key {
   measure: roas {
     description: "Return on ad Spend"
     type: number
-    sql: (${revenue}/${spend})*100 ;;
+    sql: (${revenue}/${spend}) ;;
+    hidden: no
+  }
+
+  measure: conversion_rate {
+    description: "conversion rate"
+    type: number
+    sql: (${conversions}/${impressions}) ;;
     hidden: no
   }
 

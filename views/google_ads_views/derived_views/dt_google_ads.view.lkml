@@ -45,6 +45,8 @@ view: dt_google_ads {
 
     {% endif %}
     ;;
+
+    datagroup_trigger: daily
   }
   dimension: _data_date {
     description: ""
