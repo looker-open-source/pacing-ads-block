@@ -1,3 +1,4 @@
+---
 - dashboard: spend_revenue
   title: Spend & Revenue
   layout: newspaper
@@ -55,7 +56,7 @@
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
       Ad Source: multisource_ads.ad_source
-    row: 2
+    row: 4
     col: 0
     width: 6
     height: 4
@@ -64,7 +65,7 @@
     title_text: ''
     subtitle_text: General Performance
     body_text: ''
-    row: 0
+    row: 2
     col: 0
     width: 24
     height: 2
@@ -118,7 +119,7 @@
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
       Ad Source: multisource_ads.ad_source
-    row: 2
+    row: 4
     col: 18
     width: 6
     height: 4
@@ -172,7 +173,7 @@
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
       Ad Source: multisource_ads.ad_source
-    row: 2
+    row: 4
     col: 6
     width: 6
     height: 4
@@ -226,7 +227,7 @@
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
       Ad Source: multisource_ads.ad_source
-    row: 2
+    row: 4
     col: 12
     width: 6
     height: 4
@@ -280,7 +281,7 @@
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
       Ad Source: multisource_ads.ad_source
-    row: 6
+    row: 8
     col: 12
     width: 7
     height: 4
@@ -338,7 +339,7 @@
       Campaign Name: multisource_ads.campaign_name
       Date: multisource_ads.partition_date_date
       Ad Source: multisource_ads.ad_source
-    row: 10
+    row: 12
     col: 0
     width: 24
     height: 10
@@ -347,7 +348,7 @@
     title_text: ''
     subtitle_text: Performance by Source
     body_text: ''
-    row: 20
+    row: 22
     col: 0
     width: 24
     height: 2
@@ -426,7 +427,7 @@
       Campaign Name: multisource_ads.campaign_name
       Date: multisource_ads.partition_date_date
       Ad Source: multisource_ads.ad_source
-    row: 29
+    row: 31
     col: 0
     width: 11
     height: 7
@@ -509,7 +510,7 @@
       Campaign Name: multisource_ads.campaign_name
       Date: multisource_ads.partition_date_date
       Ad Source: multisource_ads.ad_source
-    row: 22
+    row: 24
     col: 0
     width: 11
     height: 7
@@ -593,7 +594,7 @@
       Campaign Name: multisource_ads.campaign_name
       Date: multisource_ads.partition_date_date
       Ad Source: multisource_ads.ad_source
-    row: 22
+    row: 24
     col: 11
     width: 13
     height: 7
@@ -677,20 +678,22 @@
       Campaign Name: multisource_ads.campaign_name
       Date: multisource_ads.partition_date_date
       Ad Source: multisource_ads.ad_source
-    row: 29
+    row: 31
     col: 11
     width: 13
     height: 7
-  - title: Top Performing Campaigns
-    name: Top Performing Campaigns
+  - title: Top 10 Performing Campaigns
+    name: Top 10 Performing Campaigns
     model: pacing_block
     explore: multisource_ads
     type: looker_grid
-    fields: [multisource_ads.campaign_name, multisource_ads.conversions, multisource_ads.revenue]
+    fields: [multisource_ads.campaign_name, multisource_ads.conversions, multisource_ads.revenue,
+      multisource_ads.ad_source]
+    pivots: [multisource_ads.ad_source]
     filters:
       multisource_ads.KPI_select: total^_impressions
-    sorts: [multisource_ads.conversions desc 0]
-    limit: 500
+    sorts: [multisource_ads.ad_source, multisource_ads.conversions desc 0]
+    limit: 10
     column_limit: 5
     dynamic_fields:
     - category: dimension
@@ -776,7 +779,7 @@
       Campaign Name: multisource_ads.campaign_name
       Date: multisource_ads.partition_date_date
       Ad Source: multisource_ads.ad_source
-    row: 36
+    row: 38
     col: 0
     width: 24
     height: 7
@@ -803,10 +806,31 @@
       Campaign Name: multisource_ads.campaign_name
       Date: multisource_ads.partition_date_date
       Ad Source: multisource_ads.ad_source
-    row: 6
+    row: 8
     col: 5
     width: 7
     height: 4
+  - name: " (3)"
+    type: text
+    title_text: ''
+    subtitle_text: ''
+    body_text: "<div style=\"border-bottom: solid 1px #4285F4;\">\n\n<nav style=\"\
+      font-size: 18px; padding: 5px 10px 0 10px; height: 60px\">\n  \n\n <a style=\"\
+      padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height:\
+      \ 40px;\" href=\"/dashboards/fb_ads::core_metrics\"> Core Metrics Dashboard</a>\n\
+      \n      <a style=\"padding: 5px 15px; border-bottom: solid 1px #4285F4; float:\
+      \ left; line-height: 40px;\" href=\"/dashboards-next/fb_ads::campaign_manager\"\
+      > Campaign Manager </a>\n\n\n      <a style=\"padding: 5px 15px; border-bottom:\
+      \ solid 1px #4285F4; float: left; line-height: 40px;\" href=\"/dashboards/fb_ads::campaign_comparison\"\
+      > Marketing Campaign Comparison </a>\n\n\n  <a style=\"padding: 5px 15px; border-top:\
+      \ solid 1px #4285F4; border-left: solid 1px #4285F4; border-right: solid 1px\
+      \ #4285F4; border-radius: 5px 5px 0 0; float: left; line-height: 40px; font-weight:\
+      \ bold; background-color: #eaf1fe;\" href=\"#\"> Spend & Revenue</a>\n\n</nav>\n\
+      \n</div>"
+    row: 0
+    col: 0
+    width: 24
+    height: 2
   filters:
   - name: Ad Source
     title: Ad Source
