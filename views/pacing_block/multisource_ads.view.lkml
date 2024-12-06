@@ -185,7 +185,7 @@ dimension: primary_key {
     description: "Total Spent "
     type: sum
     sql: ${total_spent} ;;
-    value_format: "$#,##0.00"
+    value_format: "[>=1000000]$0.00,,\"M\";[>=1000]$0.00,\"K\";$0.00"
     drill_fields: [ad_source,campaign_name, ad_set_name, ad_name,spend,roas]
     link: {
       label: "Explore Top 20 Results"
@@ -227,6 +227,7 @@ dimension: primary_key {
     description: "Total Conversions"
     type: sum
     sql: ${total_conversions} ;;
+    value_format: "#,##0"
     drill_fields: [campaign_name, ad_set_name, ad_name,conversions,CPA]
     link: {
       label: "Explore Top 20 Results"
@@ -257,7 +258,7 @@ dimension: primary_key {
   measure: roas {
     description: "Return on ad Spend"
     type: number
-    sql: (${revenue}/${spend}) ;;
+    sql: (${revenue}/${spend})*100 ;;
     hidden: no
   }
 
@@ -265,6 +266,7 @@ dimension: primary_key {
     description: "conversion rate"
     type: number
     sql: (${conversions}/${impressions}) ;;
+    value_format: "#0.00%"
     hidden: no
   }
   measure: CPA {
