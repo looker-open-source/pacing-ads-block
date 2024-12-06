@@ -1,3 +1,10 @@
+#####################################################################
+# Owners: cesarenrique@, ivanantonio@,  edherivan@
+# Contact Method: Gchat/e-mail
+# Created Date:
+# Purpose: Joins all Ads Sources from Data Transfer Service.
+#####################################################################
+
 include: "/views/google_ads_views/derived_views/dt_google_ads.view.lkml"
 include: "/views/fb_ads_views/derived_views/dt_fb_ads.view.lkml"
 
@@ -58,8 +65,9 @@ dimension: primary_key {
     description: "Name of the campaign"
     link: {
       label: "Campaign Metrics Explore"
-      url: "/explore/pacing_block/multisource_ads?fields=multisource_ads.partition_date_date, multisource_ads.revenue, multisource_ads.spend&f[multisource_ads.campaign_name]={{ value }}&sorts=multisource_ads.partition_date_date+desc&limit=500"
+      url: "/explore/pacing_block/multisource_ads?fields=multisource_ads.ad_set_name,multisource_ads.revenue, multisource_ads.spend&f[multisource_ads.campaign_name]={{ value }}&sorts=multisource_ads.revenue+desc&limit=500"
     }
+    drill_fields: [ad_set_id,ad_set_name,ad_name]
   }
   dimension: ad_set_id {
     group_label: "ID's"
@@ -73,8 +81,9 @@ dimension: primary_key {
     description: "Ads Source Name"
     link: {
       label: "Ad Source Metrics Explore"
-      url: "/explore/pacing_block/multisource_ads?fields=multisource_ads.partition_date_date, multisource_ads.revenue, multisource_ads.spend&f[multisource_ads.ad_source]={{ value }}&sorts=multisource_ads.partition_date_date+desc&limit=500"
+      url: "/explore/pacing_block/multisource_ads?fields=multisource_ads.campaign_name,multisource_ads.ad_set_name, multisource_ads.revenue, multisource_ads.spend&f[multisource_ads.ad_source]={{ value }}&sorts=multisource_ads.revenue+desc&limit=500"
     }
+    drill_fields: [campaign_id,campaign_name,]
   }
   dimension: ad_id {
     group_label: "ID's"
@@ -186,7 +195,7 @@ dimension: primary_key {
     type: sum
     sql: ${total_spent} ;;
     value_format: "[>=1000000]$0.00,,\"M\";[>=1000]$0.00,\"K\";$0.00"
-    drill_fields: [ad_source,campaign_name, ad_set_name, ad_name,spend,roas]
+    drill_fields: [ad_source,campaign_name, ad_set_name, ad_name,spend,CPM,CPC,roas]
     link: {
       label: "Explore Top 20 Results"
       url: "{{ link }}&limit=20"
@@ -196,7 +205,7 @@ dimension: primary_key {
     description: "Total number of Impressions"
     type: sum
     sql: ${total_impressions} ;;
-    drill_fields: [campaign_name, ad_set_name, ad_name,impressions,CTR]
+    drill_fields: [ad_source,campaign_name, ad_set_name, ad_name,impressions,CTR,conversion_rate,CTR,CPM]
     link: {
       label: "Explore Top 20 Results"
       url: "{{ link }}&limit=20"
@@ -206,7 +215,7 @@ dimension: primary_key {
     description: "Total Number of Clicks"
     type: sum
     sql: ${total_clicks} ;;
-    drill_fields: [campaign_name, ad_set_name, ad_name,clicks,CPC]
+    drill_fields: [campaign_name, ad_set_name, ad_name,clicks,CPC,CTR]
     link: {
       label: "Explore Top 20 Results"
       url: "{{ link }}&limit=20"
@@ -217,7 +226,7 @@ dimension: primary_key {
     type: sum
     sql: ${total_revenue} ;;
     value_format: "$#,##0.00"
-    drill_fields: [campaign_name, ad_account_name, ad_name, ad_source, revenue,]
+    drill_fields: [ad_source,campaign_name, ad_account_name, ad_name, ad_source, revenue,roas]
     link: {
       label: "Explore Top 20 Results"
       url: "{{ link }}&limit=20"
@@ -228,7 +237,7 @@ dimension: primary_key {
     type: sum
     sql: ${total_conversions} ;;
     value_format: "#,##0"
-    drill_fields: [campaign_name, ad_set_name, ad_name,conversions,CPA]
+    drill_fields: [ad_source,campaign_name, ad_set_name, ad_name,conversions,CPA]
     link: {
       label: "Explore Top 20 Results"
       url: "{{ link }}&limit=20"

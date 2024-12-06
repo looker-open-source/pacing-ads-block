@@ -1,6 +1,8 @@
+include: "/views/pacing_block/shared/datagroups.lkml"
 view: forecast {
 
   derived_table: {
+    datagroup_trigger: weekly_refresh
     # sql specifies the SQL SELECT statement that will be used to generate
     # this derived table as a CTE, or a subquery.
     sql:
@@ -33,6 +35,7 @@ view: forecast {
     # the dimension_group will produce. (accessible in the Looker Explore UI)
     timeframes: [
       raw,
+      date,
       week,
       month,
       quarter,
@@ -42,21 +45,25 @@ view: forecast {
   }
 
   dimension: time_serie_type {
+    description: "Time Series Type: History or Forecast"
     type: string
     sql: ${TABLE}.time_serie_type ;;
   }
 
   measure: total_revenue {
+    description: "Total Revenue"
     type: number
     sql: SUM(${TABLE}.total_revenue) ;;
   }
 
   measure: total_revenue_lower_bound {
+    description: "Total Revenue Lower Bound"
     type: number
     sql: SUM(${TABLE}.total_revenue_lower_bound) ;;
   }
 
   measure: total_revenue_upper_bound {
+    description: "Total Revenue Upper Bound"
     type: number
     sql: SUM(${TABLE}.total_revenue_upper_bound) ;;
   }
