@@ -1,4 +1,3 @@
----
 - dashboard: campaign_manager
   title: Campaign Manager
   layout: newspaper
@@ -57,7 +56,7 @@
       Campaign Name: multisource_ads.campaign_name
       Ad Source: multisource_ads.ad_source
     row: 3
-    col: 0
+    col: 18
     width: 6
     height: 4
   - name: ''
@@ -103,62 +102,9 @@
     enable_conditional_formatting: false
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
+    custom_color: "#FBBC04"
     single_value_title: Total Conversions
     value_format: "#,##0"
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: none
-    show_value_labels: false
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    show_null_points: true
-    interpolation: linear
-    hidden_pivots: {}
-    defaults_version: 1
-    listen:
-      Date: multisource_ads.partition_date_date
-      Campaign Name: multisource_ads.campaign_name
-      Ad Source: multisource_ads.ad_source
-    row: 3
-    col: 6
-    width: 6
-    height: 4
-  - title: New Tile
-    name: New Tile
-    model: pacing_block
-    explore: multisource_ads
-    type: single_value
-    fields: [multisource_ads.clicks]
-    filters:
-      multisource_ads.KPI_select: total^_impressions
-    limit: 500
-    column_limit: 50
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    single_value_title: Total Clicks
     x_axis_gridlines: false
     y_axis_gridlines: true
     show_view_names: false
@@ -193,12 +139,12 @@
     col: 12
     width: 6
     height: 4
-  - title: Impressions
-    name: Impressions
+  - title: New Tile
+    name: New Tile
     model: pacing_block
     explore: multisource_ads
     type: single_value
-    fields: [multisource_ads.impressions]
+    fields: [multisource_ads.clicks]
     filters:
       multisource_ads.KPI_select: total^_impressions
     limit: 500
@@ -212,6 +158,7 @@
     enable_conditional_formatting: false
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
+    custom_color: "#174EA6"
     single_value_title: Total Clicks
     x_axis_gridlines: false
     y_axis_gridlines: true
@@ -244,14 +191,69 @@
       Campaign Name: multisource_ads.campaign_name
       Ad Source: multisource_ads.ad_source
     row: 3
-    col: 18
+    col: 0
+    width: 6
+    height: 4
+  - title: Impressions
+    name: Impressions
+    model: pacing_block
+    explore: multisource_ads
+    type: single_value
+    fields: [multisource_ads.impressions]
+    filters:
+      multisource_ads.KPI_select: total^_impressions
+    limit: 500
+    column_limit: 50
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    custom_color: "#0D652D"
+    single_value_title: Total Impressions
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: none
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    show_null_points: true
+    interpolation: linear
+    hidden_pivots: {}
+    defaults_version: 1
+    listen:
+      Date: multisource_ads.partition_date_date
+      Campaign Name: multisource_ads.campaign_name
+      Ad Source: multisource_ads.ad_source
+    row: 3
+    col: 6
     width: 6
     height: 4
   - title: Top 5 Campaigns by Clicks
     name: Top 5 Campaigns by Clicks
     model: pacing_block
     explore: multisource_ads
-    type: looker_pie
+    type: looker_column
     fields: [multisource_ads.clicks, multisource_ads.campaign_name]
     filters:
       multisource_ads.KPI_select: total^_impressions
@@ -268,8 +270,6 @@
       dimension: campaign_name
       _kind_hint: dimension
       _type_hint: string
-    value_labels: legend
-    label_type: labPer
     x_axis_gridlines: false
     y_axis_gridlines: false
     show_view_names: false
@@ -278,7 +278,7 @@
     y_axis_tick_density: default
     y_axis_tick_density_custom: 5
     show_x_axis_label: false
-    show_x_axis_ticks: false
+    show_x_axis_ticks: true
     y_axis_scale_mode: linear
     x_axis_reversed: false
     y_axis_reversed: false
@@ -314,6 +314,9 @@
       Cyber Monday Specials - multisource_ads.clicks: "#EA4335"
       Autumn Layers - multisource_ads.clicks: "#FBBC04"
       Father’s Day Offers - multisource_ads.clicks: "#202124"
+      multisource_ads.clicks: "#174EA6"
+    value_labels: legend
+    label_type: labPer
     custom_color_enabled: true
     show_single_value_title: true
     show_comparison: false
@@ -344,85 +347,59 @@
       Ad Source: multisource_ads.ad_source
     row: 7
     col: 0
-    width: 8
+    width: 12
     height: 6
   - title: Top 5 Impressions by Campaign
     name: Top 5 Impressions by Campaign
     model: pacing_block
     explore: multisource_ads
-    type: looker_pie
+    type: looker_column
     fields: [multisource_ads.campaign_name, multisource_ads.impressions]
     filters:
       multisource_ads.KPI_select: total^_impressions
     sorts: [multisource_ads.impressions desc 0]
     limit: 5
     column_limit: 50
-    value_labels: legend
-    label_type: labPer
+    x_axis_gridlines: false
+    y_axis_gridlines: false
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: false
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: none
+    show_value_labels: true
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    y_axes: [{label: '', orientation: left, series: [{axisId: multisource_ads.impressions,
+            id: multisource_ads.impressions, name: Impressions}], showLabels: false,
+        showValues: false, unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
+        type: linear}]
+    x_axis_zoom: true
+    y_axis_zoom: true
     series_colors:
       Autumn Layers: "#9AA0A6"
       Cyber Monday Specials: "#F8F8F8"
       Spring Essentials: "#FBBC04"
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    single_value_title: Total Clicks
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: none
-    show_value_labels: false
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    show_null_points: true
-    interpolation: linear
-    hidden_pivots: {}
-    defaults_version: 1
-    listen:
-      Date: multisource_ads.partition_date_date
-      Campaign Name: multisource_ads.campaign_name
-      Ad Source: multisource_ads.ad_source
-    row: 7
-    col: 8
-    width: 8
-    height: 6
-  - title: Top 5 Conversions by Campaign
-    name: Top 5 Conversions by Campaign
-    model: pacing_block
-    explore: multisource_ads
-    type: looker_pie
-    fields: [multisource_ads.campaign_name, multisource_ads.conversions]
-    filters:
-      multisource_ads.KPI_select: total^_impressions
-    sorts: [multisource_ads.conversions desc 0]
-    limit: 5
-    column_limit: 50
+      multisource_ads.impressions: "#0D652D"
     value_labels: legend
     label_type: labPer
-    series_colors:
-      Autumn Layers: "#9AA0A6"
-      Cyber Monday Specials: "#F1F3F4"
     custom_color_enabled: true
     show_single_value_title: true
     show_comparison: false
@@ -433,88 +410,6 @@
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
     single_value_title: Total Clicks
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: none
-    show_value_labels: false
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    show_null_points: true
-    interpolation: linear
-    hidden_pivots: {}
-    defaults_version: 1
-    listen:
-      Date: multisource_ads.partition_date_date
-      Campaign Name: multisource_ads.campaign_name
-      Ad Source: multisource_ads.ad_source
-    row: 7
-    col: 16
-    width: 8
-    height: 6
-  - title: Top 5 Cost by Campaign
-    name: Top 5 Cost by Campaign
-    model: pacing_block
-    explore: multisource_ads
-    type: looker_pie
-    fields: [multisource_ads.campaign_name, multisource_ads.spend]
-    filters:
-      multisource_ads.KPI_select: total^_impressions
-    sorts: [multisource_ads.spend desc 0]
-    limit: 5
-    column_limit: 50
-    value_labels: legend
-    label_type: labPer
-    series_colors:
-      Autumn Layers: "#9AA0A6"
-      Cyber Monday Specials: "#F1F3F4"
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    single_value_title: Total Clicks
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: center
-    point_style: none
-    show_value_labels: false
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
     show_null_points: true
     interpolation: linear
     hidden_pivots: {}
@@ -525,8 +420,151 @@
       Ad Source: multisource_ads.ad_source
     row: 13
     col: 0
-    width: 24
-    height: 5
+    width: 12
+    height: 6
+  - title: Top 5 Conversions by Campaign
+    name: Top 5 Conversions by Campaign
+    model: pacing_block
+    explore: multisource_ads
+    type: looker_column
+    fields: [multisource_ads.campaign_name, multisource_ads.conversions]
+    filters:
+      multisource_ads.KPI_select: total^_impressions
+    sorts: [multisource_ads.conversions desc 0]
+    limit: 5
+    column_limit: 50
+    x_axis_gridlines: false
+    y_axis_gridlines: false
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: false
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: none
+    show_value_labels: true
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    y_axes: [{label: '', orientation: left, series: [{axisId: multisource_ads.conversions,
+            id: multisource_ads.conversions, name: Conversions}], showLabels: false,
+        showValues: false, unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
+        type: linear}]
+    x_axis_zoom: true
+    y_axis_zoom: false
+    series_colors:
+      Autumn Layers: "#9AA0A6"
+      Cyber Monday Specials: "#F1F3F4"
+      multisource_ads.conversions: "#FBBC04"
+    value_labels: legend
+    label_type: labPer
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    single_value_title: Total Clicks
+    show_null_points: true
+    interpolation: linear
+    hidden_pivots: {}
+    defaults_version: 1
+    listen:
+      Date: multisource_ads.partition_date_date
+      Campaign Name: multisource_ads.campaign_name
+      Ad Source: multisource_ads.ad_source
+    row: 7
+    col: 12
+    width: 12
+    height: 6
+  - title: Top 5 Cost by Campaign
+    name: Top 5 Cost by Campaign
+    model: pacing_block
+    explore: multisource_ads
+    type: looker_column
+    fields: [multisource_ads.campaign_name, multisource_ads.spend]
+    filters:
+      multisource_ads.KPI_select: total^_impressions
+    sorts: [multisource_ads.spend desc 0]
+    limit: 5
+    column_limit: 50
+    x_axis_gridlines: false
+    y_axis_gridlines: false
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: false
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: none
+    show_value_labels: true
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    y_axes: [{label: '', orientation: left, series: [{axisId: multisource_ads.spend,
+            id: multisource_ads.spend, name: Spend}], showLabels: false, showValues: false,
+        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear}]
+    x_axis_zoom: true
+    y_axis_zoom: true
+    series_colors:
+      Autumn Layers: "#9AA0A6"
+      Cyber Monday Specials: "#F1F3F4"
+      multisource_ads.spend: "#202124"
+    value_labels: legend
+    label_type: labPer
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    single_value_title: Total Clicks
+    show_null_points: true
+    interpolation: linear
+    hidden_pivots: {}
+    defaults_version: 1
+    listen:
+      Date: multisource_ads.partition_date_date
+      Campaign Name: multisource_ads.campaign_name
+      Ad Source: multisource_ads.ad_source
+    row: 13
+    col: 12
+    width: 12
+    height: 6
   - title: Total Revenue
     name: Total Revenue
     model: pacing_block
@@ -547,6 +585,7 @@
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
     single_value_title: Total Revenue
+    value_format: $0.00,, "M"
     x_axis_gridlines: false
     y_axis_gridlines: true
     show_view_names: false
@@ -577,7 +616,7 @@
       Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
-    row: 18
+    row: 19
     col: 0
     width: 4
     height: 4
@@ -632,7 +671,7 @@
       Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
-    row: 18
+    row: 19
     col: 4
     width: 4
     height: 4
@@ -687,7 +726,7 @@
       Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
-    row: 18
+    row: 19
     col: 8
     width: 4
     height: 4
@@ -711,7 +750,7 @@
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
     single_value_title: ROAS
-    value_format: "$0.00"
+    value_format: "#,##0.00%"
     x_axis_gridlines: false
     y_axis_gridlines: true
     show_view_names: false
@@ -742,7 +781,7 @@
       Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
-    row: 18
+    row: 19
     col: 12
     width: 4
     height: 4
@@ -766,7 +805,7 @@
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
     single_value_title: CTR
-    value_format: "$0.00"
+    value_format: ''
     x_axis_gridlines: false
     y_axis_gridlines: true
     show_view_names: false
@@ -797,12 +836,12 @@
       Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
-    row: 18
+    row: 19
     col: 16
     width: 4
     height: 4
-  - title: CTR by Campaign
-    name: CTR by Campaign
+  - title: Top 5 CTR by Campaign
+    name: Top 5 CTR by Campaign
     model: pacing_block
     explore: multisource_ads
     type: looker_column
@@ -810,16 +849,16 @@
     filters:
       multisource_ads.KPI_select: total^_impressions
     sorts: [multisource_ads.CTR desc 0]
-    limit: 500
+    limit: 5
     column_limit: 50
     x_axis_gridlines: false
-    y_axis_gridlines: true
+    y_axis_gridlines: false
     show_view_names: false
     show_y_axis_labels: true
     show_y_axis_ticks: true
     y_axis_tick_density: default
     y_axis_tick_density_custom: 5
-    show_x_axis_label: true
+    show_x_axis_label: false
     show_x_axis_ticks: true
     y_axis_scale_mode: linear
     x_axis_reversed: false
@@ -830,7 +869,7 @@
     limit_displayed_rows: false
     legend_position: center
     point_style: none
-    show_value_labels: false
+    show_value_labels: true
     label_density: 25
     x_axis_scale: auto
     y_axis_combined: true
@@ -839,10 +878,13 @@
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
+    y_axes: [{label: '', orientation: left, series: [{axisId: multisource_ads.CTR,
+            id: multisource_ads.CTR, name: CTR}], showLabels: false, showValues: false,
+        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear}]
     x_axis_zoom: true
     y_axis_zoom: true
     series_colors:
-      multisource_ads.CTR: "#34A853"
+      multisource_ads.CTR: "#009c8c"
     custom_color_enabled: true
     show_single_value_title: true
     show_comparison: false
@@ -872,12 +914,12 @@
       Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
-    row: 22
+    row: 23
     col: 0
     width: 12
     height: 8
-  - title: CPM by Campaign
-    name: CPM by Campaign
+  - title: Top 5 CPM by Campaign
+    name: Top 5 CPM by Campaign
     model: pacing_block
     explore: multisource_ads
     type: looker_column
@@ -885,16 +927,16 @@
     filters:
       multisource_ads.KPI_select: total^_impressions
     sorts: [multisource_ads.CPM desc 0]
-    limit: 500
+    limit: 5
     column_limit: 50
     x_axis_gridlines: false
-    y_axis_gridlines: true
+    y_axis_gridlines: false
     show_view_names: false
     show_y_axis_labels: true
     show_y_axis_ticks: true
     y_axis_tick_density: default
     y_axis_tick_density_custom: 5
-    show_x_axis_label: true
+    show_x_axis_label: false
     show_x_axis_ticks: true
     y_axis_scale_mode: linear
     x_axis_reversed: false
@@ -905,7 +947,7 @@
     limit_displayed_rows: false
     legend_position: center
     point_style: none
-    show_value_labels: false
+    show_value_labels: true
     label_density: 25
     x_axis_scale: auto
     y_axis_combined: true
@@ -919,11 +961,15 @@
       palette_id: google-categorical-0
       options:
         steps: 5
+    y_axes: [{label: '', orientation: left, series: [{axisId: multisource_ads.CPM,
+            id: multisource_ads.CPM, name: CPM}], showLabels: false, showValues: false,
+        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear}]
     x_axis_zoom: true
     y_axis_zoom: true
     series_colors:
       multisource_ads.CTR: "#34A853"
-      multisource_ads.CPM: "#34A853"
+      multisource_ads.CPM: "#06402b"
+    label_color: []
     custom_color_enabled: true
     show_single_value_title: true
     show_comparison: false
@@ -953,12 +999,12 @@
       Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
-    row: 22
+    row: 23
     col: 12
     width: 12
     height: 8
-  - title: CPC by Campaign
-    name: CPC by Campaign
+  - title: Top 5 CPC by Campaign
+    name: Top 5 CPC by Campaign
     model: pacing_block
     explore: multisource_ads
     type: looker_column
@@ -966,7 +1012,7 @@
     filters:
       multisource_ads.KPI_select: total^_impressions
     sorts: [multisource_ads.CPC desc 0]
-    limit: 500
+    limit: 5
     column_limit: 50
     x_axis_gridlines: false
     y_axis_gridlines: true
@@ -975,7 +1021,7 @@
     show_y_axis_ticks: true
     y_axis_tick_density: default
     y_axis_tick_density_custom: 5
-    show_x_axis_label: true
+    show_x_axis_label: false
     show_x_axis_ticks: true
     y_axis_scale_mode: linear
     x_axis_reversed: false
@@ -986,7 +1032,7 @@
     limit_displayed_rows: false
     legend_position: center
     point_style: none
-    show_value_labels: false
+    show_value_labels: true
     label_density: 25
     x_axis_scale: auto
     y_axis_combined: true
@@ -995,11 +1041,14 @@
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
+    y_axes: [{label: '', orientation: left, series: [{axisId: multisource_ads.CPC,
+            id: multisource_ads.CPC, name: CPC}], showLabels: false, showValues: false,
+        unpinAxis: false, tickDensity: default, tickDensityCustom: 5, type: linear}]
     x_axis_zoom: true
     y_axis_zoom: true
     series_colors:
       multisource_ads.CTR: "#34A853"
-      multisource_ads.CPC: "#34A853"
+      multisource_ads.CPC: "#111184"
     custom_color_enabled: true
     show_single_value_title: true
     show_comparison: false
@@ -1029,29 +1078,29 @@
       Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
-    row: 30
+    row: 31
     col: 0
     width: 12
     height: 8
-  - title: Conversion Rate by Campaign
-    name: Conversion Rate by Campaign
+  - title: Top 5 Conversion Rate by Campaign
+    name: Top 5 Conversion Rate by Campaign
     model: pacing_block
     explore: multisource_ads
     type: looker_column
     fields: [multisource_ads.campaign_name, multisource_ads.conversion_rate]
     filters:
       multisource_ads.KPI_select: total^_impressions
-    sorts: [multisource_ads.campaign_name]
-    limit: 500
+    sorts: [multisource_ads.conversion_rate desc]
+    limit: 5
     column_limit: 50
     x_axis_gridlines: false
-    y_axis_gridlines: true
+    y_axis_gridlines: false
     show_view_names: false
     show_y_axis_labels: true
     show_y_axis_ticks: true
     y_axis_tick_density: default
     y_axis_tick_density_custom: 5
-    show_x_axis_label: true
+    show_x_axis_label: false
     show_x_axis_ticks: true
     y_axis_scale_mode: linear
     x_axis_reversed: false
@@ -1062,7 +1111,7 @@
     limit_displayed_rows: false
     legend_position: center
     point_style: none
-    show_value_labels: false
+    show_value_labels: true
     label_density: 25
     x_axis_scale: auto
     y_axis_combined: true
@@ -1071,12 +1120,18 @@
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
+    y_axes: [{label: '', orientation: left, series: [{axisId: multisource_ads.conversion_rate,
+            id: multisource_ads.conversion_rate, name: Conversion Rate}], showLabels: false,
+        showValues: false, unpinAxis: false, tickDensity: default, tickDensityCustom: 5,
+        type: linear}]
     x_axis_zoom: true
     y_axis_zoom: true
+    label_value_format: "#,##0.00"
     series_colors:
       multisource_ads.CTR: "#34A853"
       multisource_ads.CPC: "#34A853"
-      multisource_ads.conversion_rate: "#34A853"
+      multisource_ads.conversion_rate: "#54664a"
+    label_color: []
     custom_color_enabled: true
     show_single_value_title: true
     show_comparison: false
@@ -1106,7 +1161,7 @@
       Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
-    row: 30
+    row: 31
     col: 12
     width: 12
     height: 8
@@ -1130,7 +1185,7 @@
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
     single_value_title: Conversion Rate
-    value_format: "$0.00"
+    value_format: ''
     x_axis_gridlines: false
     y_axis_gridlines: true
     show_view_names: false
@@ -1161,7 +1216,7 @@
       Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
-    row: 18
+    row: 19
     col: 20
     width: 4
     height: 4
