@@ -82,7 +82,7 @@ view: ad_insights {
   dimension: ad_source {
     description: "Dummy data, using just facebook at the moment"
     type: string
-    sql: ${TABLE}.meta_ads_source ;;
+    sql: "Facebook" ;;
   }
   dimension: buying_type {
     description: "The method by which you pay for and target ads in your campaigns: through dynamic auction bidding,
