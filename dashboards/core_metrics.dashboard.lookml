@@ -1,4 +1,3 @@
----
 - dashboard: core_metrics
   title: Core Metrics by Campaign - Ads Overview
   layout: newspaper
@@ -103,7 +102,7 @@
     enable_conditional_formatting: false
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
-    custom_color: "#FBBC04"
+    custom_color: "#F9A620"
     single_value_title: Total Conversions
     value_format: "#,##0"
     defaults_version: 1
@@ -215,6 +214,7 @@
     target_gap: 15
     target_weight: 50
     range_min: 0
+    range_max:
     value_label_type: both
     value_label_font: 12
     value_formatting: "#"
@@ -224,7 +224,7 @@
     target_label_font: 3
     label_font_size: 4
     spinner_type: spinner
-    fill_color: "#FBBC04"
+    fill_color: "#F9A620"
     background_color: "#9AA0A6"
     spinner_color: "#202124"
     range_color: "#202124"
@@ -552,7 +552,7 @@
     enable_conditional_formatting: false
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
-    custom_color: "#FBBC04"
+    custom_color: "#F9A620"
     hidden_fields: [multisource_ads.conversions]
     hidden_points_if_no: []
     series_labels: {}
@@ -673,10 +673,10 @@
       type: advanced
       display: popover
       options: []
-    model: fb_ads
-    explore: ad_insights
+    model: pacing_block
+    explore: multisource_ads
     listens_to_filters: []
-    field: ad_insights.set_clicks_goal
+    field: multisource_ads.set_clicks_goal
   - name: Set Impressions Goal
     title: Set Impressions Goal
     type: field_filter
@@ -687,10 +687,10 @@
       type: advanced
       display: popover
       options: []
-    model: fb_ads
-    explore: ad_insights
+    model: pacing_block
+    explore: multisource_ads
     listens_to_filters: []
-    field: ad_insights.set_impressions_goal
+    field: multisource_ads.set_impressions_goal
   - name: Set Conversions Goal
     title: Set Conversions Goal
     type: field_filter
