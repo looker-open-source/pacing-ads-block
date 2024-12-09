@@ -28,7 +28,7 @@ view: +multisource_ads {
     #hidden: no
     type: date
     view_label: "Period Over Period"
-    label: "1. Current Date Range"
+    label: "Current Date Range"
     description: "Select the current date range you are interested in. Make sure any other filter on Event Date covers this period, or is removed."
     sql: ${period} IS NOT NULL ;;
     convert_tz: no
@@ -39,7 +39,7 @@ view: +multisource_ads {
     #hidden: no
     view_label: "Period Over Period"
     description: "Select the templated previous period you would like to compare to. Must be used with Current Date Range filter"
-    label: "2. Compare To:"
+    label: "Compare To:"
     type: unquoted
     allowed_value: {
       label: "Previous Period"

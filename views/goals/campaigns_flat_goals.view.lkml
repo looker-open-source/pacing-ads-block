@@ -2,12 +2,13 @@
 # Owners: cesarenrique@, ivanantonio@,  edherivan@
 # Contact Method: Gchat/e-mail
 # Created Date:
-# Purpose: Creates from Manifest file to create a derived table that uses the fields defined in campaigns_info view
+# Purpose: Creates a derived table that uses the fields defined in sheets template to use as a track performance of ads campaings across sources.
 #####################################################################
 
 include: "campaigns_info.view"
 include: "campaigns_information_sheets.view.lkml"
 include: "/views/pacing_block/multisource_ads.view.lkml"
+
 view: campaigns_flat_goals {
   derived_table: {
     sql: WITH campaign_days AS (
@@ -75,23 +76,44 @@ view: campaigns_flat_goals {
     primary_key: yes
     hidden: yes
   }
-  dimension: date {}
-  dimension: plan_name {}
-  dimension: campaign_name {}
-  dimension: goal_type {}
-  dimension: phase {}
-  dimension: age_group {}
-  dimension: demographic {}
-  dimension: geographic {}
-  dimension: audience_name {}
+  dimension: date {
+    description: "Date"
+  }
+  dimension: plan_name {
+    description: "Plan Name for your Campaings"
+  }
+  dimension: campaign_name {
+    description: "Name of your Campaings"
+  }
+  dimension: goal_type {
+    description: "Type of goal to track"
+  }
+  dimension: phase {
+    description: "Phase of your campaign"
+  }
+  dimension: age_group {
+    description: "Target age group"
+  }
+  dimension: demographic {
+    description: "Target demographic group"
+  }
+  dimension: geographic {
+    description: "Geographic target"
+  }
+  dimension: audience_name {
+    description: "Name of your audience target"
+  }
 
   dimension: goal_value {
+    description: "Assigned value of your goal"
     type: number
   }
   dimension: campaign_days_duration {
+    description: "Duration of your campaings in days"
     type: number
   }
   dimension: equivalent_day_goal{
+    hidden: yes
     type: number
   }
 
@@ -103,7 +125,8 @@ view: campaigns_flat_goals {
   }
 
   parameter: phase_param {
-   type: unquoted
+    label: "Phase Selector"
+    type: unquoted
     allowed_value: {
       label: "Active"
       value:"active"}
@@ -138,13 +161,12 @@ view: campaigns_flat_goals {
         CASE
           WHEN ${goal_type} = 'engagement' THEN ${multisource_ads.roas}
 
-          ELSE NULL
-        END
       ELSE NULL
-    END ;;
+      END
+      ELSE NULL
+      END ;;
     description: "Goal specific to each campaign phase"
   }
-
 
 }
 

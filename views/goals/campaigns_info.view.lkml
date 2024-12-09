@@ -39,15 +39,25 @@ view: campaigns_info {
       ;;
   }
 
-  dimension: campaign_name {}
-  dimension: date_start {}
-  dimension: date_end {}
+  dimension: campaign_name {
+    description: "Campaign Name"
+  }
+  dimension: date_start {
+    description: "Start Date of your Campaign"
+  }
+  dimension: date_end {
+    description: "End Date of your Campaing"
+  }
   dimension: goal {
+    description: "Goal Value"
     type: number
   }
-  dimension: goal_type {}
+  dimension: goal_type {
+    description: "Type of Goal for your campaign"
+  }
 
   measure: mean_goal {
+    description: "Average value from your goal"
     type: average
     sql: ${goal} ;;
   }
