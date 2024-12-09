@@ -1,5 +1,5 @@
 #new_lookml_runtime: no
-project_name: "fb_ads_test_project"
+project_name: "pacing_ads_block"
 
 ## Required parameters ##
 
