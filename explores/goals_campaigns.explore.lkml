@@ -1,6 +1,7 @@
 
 include: "/views/goals/campaigns_flat_goals.view.lkml"
 include: "/views/pacing_block/multisource_ads.view.lkml"
+
 explore: goals_campaigns {
 
 

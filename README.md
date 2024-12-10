@@ -1,17 +1,4 @@
 
-
-# Disclaimer
-
-This is a work in progress and subject to change. Changes may be reflected in a future iteration or the final version. It may contain issues, bugs, performance issues and other potential, but unexpected, problems. Please take in consideration that synthetic data was used for testing.
-
-GOOGLE CONFIDENTIAL - SHARED UNDER NDA - DO NOT DISTRIBUTE
-Please be advised that this Looker Pacing Block LookML code is currently under development. As customer needs evolve, the LookML code may be modified accordingly. Your organization will be informed of any material changes via email, especially if your company utilizes the Looker (originals) version.
-Please be aware that this dashboard may consume significant BigQuery resources, potentially incurring additional costs.
-In case you need some help with the connection, please refer to this Looker Documentation: BigQuery
-For questions/issues and feedback, reach out to insights-customer-support@google.com.
-
-
-
 # Multisource Ads Block
 
 A Pacing dashboard is designed to provide a centralized view of campaign performance over time. It allows marketers to track key metrics such as impressions, clicks, conversions, and cost per acquisition (CPA) against predetermined pacing goals. This visual representation helps identify areas where campaigns are ahead or behind schedule, enabling timely adjustments to optimize performance.

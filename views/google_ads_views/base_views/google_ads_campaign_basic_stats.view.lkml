@@ -95,6 +95,7 @@ view: google_ads_campaign_basic_stats {
     sql: ${TABLE}.segments_slot ;;
   }
   measure: count {
+    description: "Count of records"
     type: count
   }
 }
