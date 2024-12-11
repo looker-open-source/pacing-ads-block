@@ -817,11 +817,11 @@
     body_text: "<div style=\"border-bottom: solid 1px #4285F4;\">\n\n<nav style=\"\
       font-size: 18px; padding: 5px 10px 0 10px; height: 60px\">\n  \n\n <a style=\"\
       padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height:\
-      \ 40px;\" href=\"/dashboards/fb_ads::core_metrics\"> Core Metrics Dashboard</a>\n\
+      \ 40px;\" href=\"/dashboards/pacing_block::core_metrics\"> Core Metrics Dashboard</a>\n\
       \n      <a style=\"padding: 5px 15px; border-bottom: solid 1px #4285F4; float:\
-      \ left; line-height: 40px;\" href=\"/dashboards-next/fb_ads::campaign_manager\"\
+      \ left; line-height: 40px;\" href=\"/dashboards-next/pacing_block::campaign_manager\"\
       > Campaign Manager </a>\n\n\n      <a style=\"padding: 5px 15px; border-bottom:\
-      \ solid 1px #4285F4; float: left; line-height: 40px;\" href=\"/dashboards/fb_ads::campaign_comparison\"\
+      \ solid 1px #4285F4; float: left; line-height: 40px;\" href=\"/dashboards/pacing_block::campaign_comparison\"\
       > Marketing Campaign Comparison </a>\n\n\n  <a style=\"padding: 5px 15px; border-top:\
       \ solid 1px #4285F4; border-left: solid 1px #4285F4; border-right: solid 1px\
       \ #4285F4; border-radius: 5px 5px 0 0; float: left; line-height: 40px; font-weight:\

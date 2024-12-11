@@ -199,13 +199,13 @@
 
             <nav style="font-size: 18px; padding: 5px 10px 0 10px; height: 60px">
 
-             <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;" href="/dashboards/fb_ads::core_metrics"> Core Metrics Dashboard </a>
+             <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;" href="/dashboards/pacing_block::core_metrics"> Core Metrics Dashboard </a>
 
-            <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;" href="/dashboards-next/fb_ads::campaign_manager"> Campaign Manager </a>
+            <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;" href="/dashboards-next/pacing_block::campaign_manager"> Campaign Manager </a>
 
             <a style="padding: 5px 15px; border-top: solid 1px #4285F4; border-left: solid 1px #4285F4; border-right: solid 1px #4285F4; border-radius: 5px 5px 0 0; float: left; line-height: 40px; font-weight: bold; background-color: #eaf1fe;" href="#"> Marketing Campaign Comparison</a>
 
-            <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;" href="/dashboards/fb_ads::spend_revenue"> Spend & Revenue </a>
+            <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;" href="/dashboards/pacing_block::spend_revenue"> Spend & Revenue </a>
 
             </nav>
 

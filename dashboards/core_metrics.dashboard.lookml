@@ -15,12 +15,12 @@
       \ border-right: solid 1px #4285F4; border-radius: 5px 5px 0 0; float: left;\
       \ line-height: 40px; font-weight: bold; background-color: #eaf1fe;\" href=\"\
       #\"> Core Metrics Dashboard</a>\n\n      <a style=\"padding: 5px 15px; border-bottom:\
-      \ solid 1px #4285F4; float: left; line-height: 40px;\" href=\"/dashboards-next/fb_ads::campaign_manager\"\
+      \ solid 1px #4285F4; float: left; line-height: 40px;\" href=\"/dashboards-next/pacing_block::campaign_manager\"\
       > Campaign Manager </a>\n\n\n      <a style=\"padding: 5px 15px; border-bottom:\
-      \ solid 1px #4285F4; float: left; line-height: 40px;\" href=\"/dashboards/fb_ads::campaign_comparison\"\
+      \ solid 1px #4285F4; float: left; line-height: 40px;\" href=\"/dashboards/pacing_block::campaign_comparison\"\
       > Marketing Campaign Comparison </a>\n\n      <a style=\"padding: 5px 15px;\
       \ border-bottom: solid 1px #4285F4; float: left; line-height: 40px;\" href=\"\
-      /dashboards/fb_ads::spend_revenue\"> Spend & Revenue </a>\n\n</nav>\n\n</div>"
+      /dashboards/pacing_block::spend_revenue\"> Spend & Revenue </a>\n\n</nav>\n\n</div>"
     row: 0
     col: 0
     width: 23

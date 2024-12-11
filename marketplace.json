@@ -1,0 +1,32 @@
+{
+  "label": "Pacing Ads Block",
+  "category_label": "Models",
+  "branding": {
+    "image_uri": "https://marketplace-api.looker.com/block-icons/pacing-ads-block.png",
+    "tagline": "Designed to provide a centralized view of campaign performance over time across multiple sources. "
+  },
+  "constants": {
+    "CONNECTION_NAME": {
+      "label": "Connection Name",
+      "value_constraint": "connection"
+    },
+    "PROJECT_ID": {
+      "label": "BQ Project ID"
+    },
+    "FADS_DATASET_NAME": {
+        "label": "FB Ads Dataset Transfer Name"
+    },
+    "GADS_DATASET_NAME": {
+        "label": "Google Ads Dataset Transfer Name"
+    },
+    "GADS_CUSTOMER_ID": {
+        "label": "BQML Models Included"
+    }
+  },
+  "models": [
+    {
+      "name": "pacing_block",
+      "connection_constant": "CONNECTION_NAME"
+    }
+  ]
+}
