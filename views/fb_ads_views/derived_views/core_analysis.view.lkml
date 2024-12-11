@@ -146,23 +146,6 @@ view: +ad_insights {
     value_format: "#0.00%"
   }
 
-  measure: dash_nav {
-    hidden: no
-    label: "Navigation Bar"
-    type: string
-    sql: "";;
-    html:
-    <div style="background-color: #FFF; height:500px;width:100%;"></div>
-    <div style="background-color: #FFF; height:23px;width:100%;"></div>
-      <div style=" background-color: #eaf1fe; border: solid 2px ##9AA0A6; border-radius: 5px; padding: 5px 10px; height: 60px; width:100%">
-        <nav style="font-size: 16px; color: #FFF">
-          <a style="padding: 5px; float: center; line-height: 40px; margin-left: 9px; color: black">Related Dashboards:  </a>
-          <a style="padding: 5px; float: center; line-height: 40px; margin-left: 9px; color: #4285F4" href="/dashboards/fb_ads::campaign_manager">Campaign Manager</a>
-          <a style="padding: 5px; float: center; line-height: 40px; margin-left: 9px; color: #4285F4" href="/dashboards/fb_ads::spend_revenue">Spend and Revenue</a>
-        </nav>
-      </div>
-    <div style="background-color: #FFF; height:500px;width:100%"></div>;;
-  }
 
 # ------ Parameters -----
 

@@ -15,7 +15,7 @@ constant: PROJECT_ID {
 ### For tracking Goals
 constant: SHEETS_CAMPAIGN_TABLE {
   value: "campaigns_information"
-  export: override_required
+  export: override_optional
 }
 
 ## Leave the value empty (value:"") if you're not using the source, otherwise you'll get an error
