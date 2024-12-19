@@ -11,16 +11,19 @@
       "value_constraint": "connection"
     },
     "PROJECT_ID": {
-      "label": "BQ Project ID"
+      "label": "BigQuery Project ID"
     },
     "FADS_DATASET_NAME": {
-        "label": "FB Ads Dataset Transfer Name"
+        "label": "FB Ads Dataset Transfer Name",
+        "description": "Dataset name where the data transfer for Facebook is located. Leave the value empty if you're not using the source, otherwise you'll get an error"
     },
     "GADS_DATASET_NAME": {
-        "label": "Google Ads Dataset Transfer Name"
+        "label": "Google Ads Dataset Transfer Name",
+        "description": "Dataset name where the data transfer for Google Ads is located. Leave the value empty if you're not using the source, otherwise you'll get an error"
     },
     "GADS_CUSTOMER_ID": {
-        "label": "BQML Models Included"
+        "label": "Google Ads Customer ID",
+        "description": "Customer ID that is associated to your current Google Ads dataset in BigQuery"
     }
   },
   "models": [
