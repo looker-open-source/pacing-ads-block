@@ -1,7 +1,4 @@
 #####################################################################
-# Owners: cesarenrique@, ivanantonio@,  edherivan@
-# Contact Method: Gchat/e-mail
-# Created Date:
 # Purpose: Created from Google Ads Transfer, specifically from Ads Campaign table.
 #####################################################################
 

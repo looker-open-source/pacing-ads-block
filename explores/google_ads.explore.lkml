@@ -1,7 +1,4 @@
 #####################################################################
-# Owners: cesarenrique@, ivanantonio@, agregori@, edherivan@
-# Contact Method: Gchat/e-mail
-# Created Date:
 # Purpose: Contains the Google Ads Explore joined by relevant views and fields.
 #####################################################################
 
@@ -38,6 +35,7 @@ explore: GAds {
 }
 
 explore: CampaignBasicStats {
+  hidden: yes
   from: google_ads_campaign_basic_stats
   label: "Google Ads Campaigns Stats"
   join: google_ads_campaign {
@@ -47,4 +45,4 @@ explore: CampaignBasicStats {
   }
 }
 
-explore: dt_google_ads {}
+explore: dt_google_ads {hidden:yes}

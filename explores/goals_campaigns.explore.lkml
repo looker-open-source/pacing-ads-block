@@ -1,3 +1,6 @@
+#####################################################################
+# Purpose: Contains the Goal Explore created from GSheets derived table joined to the multisource_ads Explore.
+#####################################################################
 
 include: "/views/goals/campaigns_flat_goals.view.lkml"
 include: "/views/pacing_block/multisource_ads.view.lkml"

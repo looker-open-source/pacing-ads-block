@@ -1,7 +1,4 @@
 #####################################################################
-# Owners: cesarenrique@, ivanantonio@,  edherivan@
-# Contact Method: Gchat/e-mail
-# Created Date:
 # Purpose: Creates a derived table that uses the fields defined in sheets template to use as a track performance of ads campaings across sources.
 #####################################################################
 
