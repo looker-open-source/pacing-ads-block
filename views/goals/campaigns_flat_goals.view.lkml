@@ -117,7 +117,7 @@ view: campaigns_flat_goals {
   measure: daily_goal {
     type: average
     label: "Daily Goal"
-    sql: ${equivalent_day_goal}  + (RAND() - 0.5) * ${equivalent_day_goal} * 0.5;;
+    sql: ${equivalent_day_goal};;
     value_format_name: decimal_0
   }
 

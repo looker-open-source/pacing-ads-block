@@ -48,7 +48,7 @@
     x_axis_scale: auto
     y_axis_combined: true
     show_null_points: true
-    interpolation: step
+    interpolation: linear
     y_axes: [{label: '', orientation: left, series: [{axisId: goals_campaigns.phase_goal,
             id: goals_campaigns.phase_goal, name: Actual Metric Value}], showLabels: true,
         showValues: true, maxValue: !!null '', minValue: 0, unpinAxis: false, tickDensity: default,
