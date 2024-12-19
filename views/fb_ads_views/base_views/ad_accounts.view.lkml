@@ -1,7 +1,4 @@
 #####################################################################
-# Owners: cesarenrique@, ivanantonio@, edherivan@
-# Contact Method: Gchat/e-mail
-# Created Date:
 # Purpose: Contains information about Ad Accounts from Facebook to use for
 # Data Analysis, this table represents a business, person or other entity who creates and manages ads on Facebook.
 # Multiple people can manage an account, and each person can have one or more levels of access to an account

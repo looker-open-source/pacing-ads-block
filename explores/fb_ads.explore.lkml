@@ -1,7 +1,4 @@
 #####################################################################
-# Owners: cesarenrique@, ivanantonio@, agregori@, edherivan@
-# Contact Method: Gchat/e-mail
-# Created Date:
 # Purpose: Contains the Facebook Ads  Explores joined by relevant views and fields.
 #####################################################################
 
@@ -25,12 +22,8 @@ explore: ad_insights {
   }
 }
 
-explore: ad_accounts {
-  hidden:yes
-  }
+explore: ad_accounts {hidden:yes}
 
-explore: ad_insights_actions {
-  hidden: yes
-}
+explore: ad_insights_actions {hidden: yes}
 
-explore: dt_fb_ads {}
+explore: dt_fb_ads {hidden:yes}

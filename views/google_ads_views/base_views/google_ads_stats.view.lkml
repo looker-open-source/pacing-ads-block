@@ -1,10 +1,6 @@
 #####################################################################
-# Owners: cesarenrique@, ivanantonio@,  edherivan@
-# Contact Method: Gchat/e-mail
-# Created Date:
 # Purpose: Created from Google Ads Transfer, specifically from Ads Stats table.
 #####################################################################
-
 
 view: google_ads_stats {
   sql_table_name: `@{PROJECT_ID}.@{GADS_DATASET_NAME}.ads_AdStats_@{GADS_CUSTOMER_ID}` ;;

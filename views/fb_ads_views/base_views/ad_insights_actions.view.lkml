@@ -1,7 +1,4 @@
 #####################################################################
-# Owners: cesarenrique@, ivanantonio@, edherivan@
-# Contact Method: Gchat/e-mail
-# Created Date:
 # Purpose: Contains information about Ad insights Actions from Facebook to use for
 # Data Analysis. The Insights Actions API can return several metrics which are estimated or in-development.
 # In some cases a metric may be both estimated and in-development.

@@ -1,7 +1,4 @@
 #####################################################################
-# Owners: cesarenrique@, ivanantonio@, agregori@, edherivan@
-# Contact Method: Gchat/e-mail
-# Created Date:
 # Purpose: Contains the Multisource Ads Explore.
 #####################################################################
 
@@ -13,4 +10,4 @@ explore: multisource_ads {}
 
 explore: forecast {}
 
-explore: training {}
+explore: training {hidden: yes}

@@ -1,7 +1,4 @@
 #####################################################################
-# Owners: cesarenrique@, ivanantonio@,  edherivan@
-# Contact Method: Gchat/e-mail
-# Created Date:
 # Purpose: Joins all Ads Sources from Data Transfer Service.
 #####################################################################
 

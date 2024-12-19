@@ -1,3 +1,6 @@
+#####################################################################
+# Purpose: Creates a derived table that uses the fields defined in manifest file to use as a track performance of ads campaings across sources.
+#####################################################################
 view: campaigns_info {
   derived_table: {
     sql:
