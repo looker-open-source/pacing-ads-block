@@ -22,17 +22,17 @@ constant: SHEETS_CAMPAIGN_TABLE {
 
 constant: FADS_DATASET_NAME {
   value: "PacingDashData"
-  export: override_required
+  export: override_optional
 }
 
 constant: GADS_DATASET_NAME {
   value: "GoogleAdsPD"
-  export: override_required
+  export: override_optional
 }
 
 constant: GADS_CUSTOMER_ID {
   value: "4717384083"
-  export: override_required
+  export: override_optional
 }
 
 
