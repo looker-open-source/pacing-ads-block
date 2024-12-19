@@ -13,10 +13,10 @@ They are defined in the manifest file of this project and ready to be replaced f
 This block requires a data transfer to a single BigQuery project from the ads datasets. Fields coming from these raw tables are worked in our block by adding description to the relevant fields and the calculated fields have been created, sames that are later leveraged by the multisource_ads view.
 
 #Facebook - Meta
-Here is the [official documentation](https://cloud.google.com/bigquery/docs/facebook-ads-transfer) about how to do this transfer process añadir API
+Here is the [official documentation](https://cloud.google.com/bigquery/docs/facebook-ads-transfer) about how to do this transfer process.
 
 #Google Ads
-Here is the [official documentation](https://cloud.google.com/bigquery/docs/google-ads-transfer) about how to do this transfer process añadir API
+Here is the [official documentation](https://cloud.google.com/bigquery/docs/google-ads-transfer) about how to do this transfer process.
 
 ## Custom Visualizations:
 
