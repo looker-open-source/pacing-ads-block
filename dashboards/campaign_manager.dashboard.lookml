@@ -4,7 +4,7 @@
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
-  preferred_slug: LpNUc4vomVE8qUYAq2DIAV
+  preferred_slug: CxGpfZFvkkzx6V9plbYeMH
   elements:
   - title: Total Spend
     name: Total Spend
@@ -63,7 +63,6 @@
   - name: ''
     type: text
     title_text: ''
-    subtitle_text: ''
     body_text: |-
       <div style="border-bottom: solid 1px #4285F4;">
 
@@ -748,11 +747,10 @@
     model: pacing_block
     explore: multisource_ads
     type: looker_column
-    fields: [multisource_ads.CTR, multisource_ads.ad_source, ad_source]
-    pivots: [multisource_ads.ad_source]
+    fields: [multisource_ads.CTR, multisource_ads.ad_source]
     filters:
       multisource_ads.KPI_select: total^_impressions
-    sorts: [multisource_ads.ad_source, multisource_ads.CTR desc 0]
+    sorts: [multisource_ads.CTR desc]
     limit: 5
     column_limit: 50
     dynamic_fields:
@@ -772,7 +770,7 @@
     y_axis_tick_density: default
     y_axis_tick_density_custom: 5
     show_x_axis_label: false
-    show_x_axis_ticks: false
+    show_x_axis_ticks: true
     y_axis_scale_mode: linear
     x_axis_reversed: false
     y_axis_reversed: false
@@ -797,8 +795,9 @@
     x_axis_zoom: true
     y_axis_zoom: true
     hidden_series: []
+    font_size: ''
     series_colors:
-      multisource_ads.CTR: "#009c8c"
+      multisource_ads.CTR: "#34A853"
       GAds - SEARCH_PARTNERS - multisource_ads.CTR: "#FEEFC3"
       GAds - UNKNOWN - multisource_ads.CTR: "#D2E3FC"
       GAds - UNSPECIFIED - multisource_ads.CTR: "#FAD2CF"
@@ -833,18 +832,17 @@
       Campaign Name: multisource_ads.campaign_name
     row: 18
     col: 0
-    width: 6
-    height: 9
+    width: 12
+    height: 6
   - title: CPM by Source
     name: CPM by Source
     model: pacing_block
     explore: multisource_ads
     type: looker_column
-    fields: [multisource_ads.CPM, multisource_ads.ad_source, ad_source]
-    pivots: [multisource_ads.ad_source]
+    fields: [multisource_ads.CPM, multisource_ads.ad_source]
     filters:
       multisource_ads.KPI_select: total^_impressions
-    sorts: [multisource_ads.ad_source, multisource_ads.CPM desc 0]
+    sorts: [multisource_ads.ad_source, multisource_ads.CPM desc]
     limit: 5
     column_limit: 50
     dynamic_fields:
@@ -864,7 +862,7 @@
     y_axis_tick_density: default
     y_axis_tick_density_custom: 5
     show_x_axis_label: false
-    show_x_axis_ticks: false
+    show_x_axis_ticks: true
     y_axis_scale_mode: linear
     x_axis_reversed: false
     y_axis_reversed: false
@@ -895,7 +893,7 @@
     y_axis_zoom: true
     series_colors:
       multisource_ads.CTR: "#34A853"
-      multisource_ads.CPM: "#06402b"
+      multisource_ads.CPM: "#34A853"
       GAds - SEARCH_PARTNERS - multisource_ads.CPM: "#FEEFC3"
       GAds - UNKNOWN - multisource_ads.CPM: "#D2E3FC"
       GAds - UNSPECIFIED - multisource_ads.CPM: "#FAD2CF"
@@ -931,18 +929,17 @@
       Campaign Name: multisource_ads.campaign_name
     row: 18
     col: 12
-    width: 6
-    height: 9
+    width: 12
+    height: 6
   - title: CPC by Source
     name: CPC by Source
     model: pacing_block
     explore: multisource_ads
     type: looker_column
-    fields: [multisource_ads.CPC, multisource_ads.ad_source, ad_source]
-    pivots: [multisource_ads.ad_source]
+    fields: [multisource_ads.CPC, multisource_ads.ad_source]
     filters:
       multisource_ads.KPI_select: total^_impressions
-    sorts: [multisource_ads.ad_source, multisource_ads.CPC desc 0]
+    sorts: [multisource_ads.ad_source, multisource_ads.CPC desc]
     limit: 5
     column_limit: 50
     dynamic_fields:
@@ -962,7 +959,7 @@
     y_axis_tick_density: default
     y_axis_tick_density_custom: 5
     show_x_axis_label: false
-    show_x_axis_ticks: false
+    show_x_axis_ticks: true
     y_axis_scale_mode: linear
     x_axis_reversed: false
     y_axis_reversed: false
@@ -988,7 +985,7 @@
     y_axis_zoom: true
     series_colors:
       multisource_ads.CTR: "#34A853"
-      multisource_ads.CPC: "#111184"
+      multisource_ads.CPC: "#34A853"
       GAds - SEARCH_PARTNERS - multisource_ads.CPC: "#FEEFC3"
       GAds - UNKNOWN - multisource_ads.CPC: "#D2E3FC"
       GAds - UNSPECIFIED - multisource_ads.CPC: "#FAD2CF"
@@ -1021,20 +1018,19 @@
       Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
-    row: 18
-    col: 6
-    width: 6
-    height: 9
+    row: 24
+    col: 0
+    width: 12
+    height: 6
   - title: Conversion Rate by Source
     name: Conversion Rate by Source
     model: pacing_block
     explore: multisource_ads
     type: looker_column
-    fields: [multisource_ads.conversion_rate, multisource_ads.ad_source, ad_source]
-    pivots: [multisource_ads.ad_source]
+    fields: [multisource_ads.conversion_rate, multisource_ads.ad_source]
     filters:
       multisource_ads.KPI_select: total^_impressions
-    sorts: [multisource_ads.ad_source, multisource_ads.conversion_rate desc 0]
+    sorts: [multisource_ads.conversion_rate desc]
     limit: 5
     column_limit: 50
     dynamic_fields:
@@ -1054,7 +1050,7 @@
     y_axis_tick_density: default
     y_axis_tick_density_custom: 5
     show_x_axis_label: false
-    show_x_axis_ticks: false
+    show_x_axis_ticks: true
     y_axis_scale_mode: linear
     x_axis_reversed: false
     y_axis_reversed: false
@@ -1083,7 +1079,7 @@
     series_colors:
       multisource_ads.CTR: "#34A853"
       multisource_ads.CPC: "#34A853"
-      multisource_ads.conversion_rate: "#54664a"
+      multisource_ads.conversion_rate: "#34A853"
       GAds - SEARCH_PARTNERS - multisource_ads.conversion_rate: "#FEEFC3"
       GAds - UNKNOWN - multisource_ads.conversion_rate: "#D2E3FC"
       GAds - UNSPECIFIED - multisource_ads.conversion_rate: "#FAD2CF"
@@ -1117,10 +1113,10 @@
       Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
-    row: 18
-    col: 18
-    width: 6
-    height: 9
+    row: 24
+    col: 12
+    width: 12
+    height: 6
   - title: Conversion rate
     name: Conversion rate
     model: pacing_block
@@ -1179,7 +1175,6 @@
   - name: Scorecards
     type: text
     title_text: Scorecards
-    subtitle_text: ''
     body_text: ''
     row: 3
     col: 0
@@ -1280,7 +1275,7 @@
       Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
-    row: 27
+    row: 30
     col: 0
     width: 24
     height: 7
@@ -1379,7 +1374,7 @@
       Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
-    row: 34
+    row: 37
     col: 0
     width: 24
     height: 7
