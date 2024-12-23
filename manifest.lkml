@@ -21,17 +21,17 @@ constant: SHEETS_CAMPAIGN_TABLE {
 ## Leave the value empty (value:"") if you're not using the source, otherwise you'll get an error
 
 constant: FADS_DATASET_NAME {
-  value: "FbAds-transfer-dataset"
+  value: ""
   export: override_optional
 }
 
 constant: GADS_DATASET_NAME {
-  value: "GoogleAds-Transfer-Dataset"
+  value: ""
   export: override_optional
 }
 
 constant: GADS_CUSTOMER_ID {
-  value: "11111111111"
+  value: ""
   export: override_optional
 }
 
