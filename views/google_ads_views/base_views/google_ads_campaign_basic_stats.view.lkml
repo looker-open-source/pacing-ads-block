@@ -1,3 +1,7 @@
+#####################################################################
+# Purpose: Created from Google Ads Transfer, specifically from Ads Campaign Basic Stats table.
+#####################################################################
+
 view: google_ads_campaign_basic_stats {
   sql_table_name: `@{PROJECT_ID}.@{GADS_DATASET_NAME}.ads_CampaignBasicStats_@{GADS_CUSTOMER_ID}` ;;
 
