@@ -3,12 +3,11 @@
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
-  preferred_slug: nrsq454TklMs83hYXNAD0n
+  preferred_slug: ccNKlUQavDD4guqbKBSsZm
   elements:
   - name: ''
     type: text
     title_text: ''
-    subtitle_text: ''
     body_text: "<div style=\"border-bottom: solid 1px #4285F4;\">\n\n<nav style=\"\
       font-size: 18px; padding: 5px 10px 0 10px; height: 60px\">\n  \n\n  <a style=\"\
       padding: 5px 15px; border-top: solid 1px #4285F4; border-left: solid 1px #4285F4;\
@@ -20,7 +19,8 @@
       \ solid 1px #4285F4; float: left; line-height: 40px;\" href=\"/dashboards/pacing_block::campaign_comparison\"\
       > Marketing Campaign Comparison </a>\n\n      <a style=\"padding: 5px 15px;\
       \ border-bottom: solid 1px #4285F4; float: left; line-height: 40px;\" href=\"\
-      /dashboards/pacing_block::spend_revenue\"> Spend & Revenue </a>\n\n</nav>\n\n</div>"
+      /dashboards/pacing_block::spend_revenue\"> Spend & Revenue </a>\n\n</nav>\n\n\
+      </div>"
     row: 0
     col: 0
     width: 23
@@ -49,7 +49,6 @@
       Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
-      Set Conversions Goal: multisource_ads.set_conversions_goal
     row: 3
     col: 1
     width: 7
@@ -80,7 +79,6 @@
       Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
-      Set Conversions Goal: multisource_ads.set_conversions_goal
     row: 3
     col: 8
     width: 7
@@ -111,7 +109,6 @@
       Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
-      Set Conversions Goal: multisource_ads.set_conversions_goal
     row: 3
     col: 15
     width: 7
@@ -122,7 +119,6 @@
     explore: multisource_ads
     type: marketplace_viz_radial_gauge::radial_gauge-marketplace
     fields: [multisource_ads.clicks, multisource_ads.clicks_goal]
-    filters: {}
     limit: 500
     column_limit: 50
     hidden_fields: []
@@ -185,10 +181,9 @@
     defaults_version: 0
     listen:
       Ad Source: multisource_ads.ad_source
-      Set Clicks Goal: multisource_ads.set_clicks_goal
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
-      Set Conversions Goal: multisource_ads.set_conversions_goal
+      Set Clicks Goal: multisource_ads.set_clicks_goal
     row: 11
     col: 1
     width: 7
@@ -199,7 +194,6 @@
     explore: multisource_ads
     type: marketplace_viz_radial_gauge::radial_gauge-marketplace
     fields: [multisource_ads.conversions, multisource_ads.conversions_goal]
-    filters: {}
     limit: 500
     column_limit: 50
     hidden_fields: []
@@ -268,7 +262,6 @@
     hidden_pivots: {}
     listen:
       Ad Source: multisource_ads.ad_source
-      Set Clicks Goal: multisource_ads.set_impressions_goal
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
       Set Conversions Goal: multisource_ads.set_conversions_goal
@@ -282,7 +275,6 @@
     explore: multisource_ads
     type: marketplace_viz_radial_gauge::radial_gauge-marketplace
     fields: [multisource_ads.impressions, multisource_ads.impressions_goal]
-    filters: {}
     limit: 500
     column_limit: 50
     hidden_fields: []
@@ -351,10 +343,9 @@
     hidden_pivots: {}
     listen:
       Ad Source: multisource_ads.ad_source
-      Set Clicks Goal: multisource_ads.set_impressions_goal
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
-      Set Conversions Goal: multisource_ads.set_conversions_goal
+      Set Impressions Goal: multisource_ads.set_impressions_goal
     row: 11
     col: 8
     width: 7
@@ -365,7 +356,6 @@
     explore: multisource_ads
     type: single_value
     fields: [multisource_ads.clicks, multisource_ads.clicks_goal]
-    filters: {}
     limit: 500
     column_limit: 50
     custom_color_enabled: true
@@ -438,10 +428,9 @@
     defaults_version: 1
     listen:
       Ad Source: multisource_ads.ad_source
-      Set Clicks Goal: multisource_ads.set_clicks_goal
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
-      Set Conversions Goal: multisource_ads.set_conversions_goal
+      Set Clicks Goal: multisource_ads.set_clicks_goal
     row: 7
     col: 1
     width: 7
@@ -452,7 +441,6 @@
     explore: multisource_ads
     type: single_value
     fields: [multisource_ads.impressions, multisource_ads.impressions_goal]
-    filters: {}
     limit: 500
     column_limit: 50
     custom_color_enabled: true
@@ -526,10 +514,9 @@
     hidden_pivots: {}
     listen:
       Ad Source: multisource_ads.ad_source
-      Set Clicks Goal: multisource_ads.set_impressions_goal
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
-      Set Conversions Goal: multisource_ads.set_conversions_goal
+      Set Impressions Goal: multisource_ads.set_impressions_goal
     row: 7
     col: 8
     width: 7
@@ -540,7 +527,6 @@
     explore: multisource_ads
     type: single_value
     fields: [multisource_ads.conversions, multisource_ads.conversions_goal]
-    filters: {}
     limit: 500
     column_limit: 50
     custom_color_enabled: true
