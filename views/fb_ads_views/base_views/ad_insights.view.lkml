@@ -1,7 +1,4 @@
 #####################################################################
-# Owners: cesarenrique@, ivanantonio@, edherivan@
-# Contact Method: Gchat/e-mail
-# Created Date:
 # Purpose: Contains information about Ad insights from Facebook to use for
 # Data Analysis. The Insights API can return several metrics which are estimated or in-development.
 # In some cases a metric may be both estimated and in-development.
@@ -82,7 +79,7 @@ view: ad_insights {
   dimension: ad_source {
     description: "Dummy data, using just facebook at the moment"
     type: string
-    sql: "Facebook" ;;
+    sql: "Meta" ;;
   }
   dimension: buying_type {
     description: "The method by which you pay for and target ads in your campaigns: through dynamic auction bidding,
