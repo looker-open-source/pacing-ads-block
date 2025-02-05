@@ -5,6 +5,7 @@
 
 view: google_ads_group {
   sql_table_name: `@{PROJECT_ID}.@{GADS_DATASET_NAME}.ads_AdGroup_@{GADS_CUSTOMER_ID}` ;;
+  fields_hidden_by_default: yes
 
   dimension_group: _data {
     type: time
@@ -69,16 +70,19 @@ view: google_ads_group {
     description: "The ID of the ad group."
     type: string
     sql: CAST(${TABLE}.ad_group_id AS STRING);;
+    hidden: no
   }
   dimension: ad_group_name {
     description: "The name of the ad group. "
     type: string
     sql: ${TABLE}.ad_group_name ;;
+    hidden: no
   }
   dimension: ad_group_status {
     description: "The status of the ad group."
     type: string
     sql: ${TABLE}.ad_group_status ;;
+    hidden: no
   }
   dimension: ad_group_tracking_url_template {
     description: "The URL template for constructing a tracking URL."
@@ -89,6 +93,7 @@ view: google_ads_group {
     description: "The type of the ad group."
     type: string
     sql: ${TABLE}.ad_group_type ;;
+    hidden: no
   }
   dimension: ad_group_url_custom_parameters {
     description: "The list of mappings used to substitute custom parameter tags in a `tracking_url_template`, `final_urls`, or `mobile_final_urls`."

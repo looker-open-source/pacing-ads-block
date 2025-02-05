@@ -193,13 +193,13 @@ view: google_ads_stats {
     type: string
     sql: ${TABLE}.segments_click_type ;;
   }
-  dimension_group: segments {
+  dimension_group: ad_date {
     description: "Date to which metrics apply."
     type: time
     timeframes: [raw, date, week, month, quarter]
     convert_tz: no
     datatype: date
-    sql: ${TABLE}.segments_date ;;
+    sql: ${TABLE}._data_date;;
   }
 
 

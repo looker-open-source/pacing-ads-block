@@ -4,6 +4,7 @@
 
 view: google_ads_campaign {
   sql_table_name: `@{PROJECT_ID}.@{GADS_DATASET_NAME}.ads_Campaign_@{GADS_CUSTOMER_ID}` ;;
+  fields_hidden_by_default: yes
 
   dimension_group: _data {
     type: time
@@ -23,6 +24,7 @@ view: google_ads_campaign {
     description: "The name of the bidding strategy."
     type: string
     sql: ${TABLE}.bidding_strategy_name ;;
+    hidden: no
   }
   dimension: campaign_advertising_channel_sub_type {
     description: "Optional refinement to `advertising_channel_type`. Must be a valid sub-type of the parent channel type."
@@ -78,6 +80,7 @@ view: google_ads_campaign {
     description: "  The budget of the campaign."
     type: string
     sql: ${TABLE}.campaign_campaign_budget ;;
+    hidden: no
   }
   dimension_group: campaign_end {
     description: "The date when campaign ended."
@@ -86,6 +89,7 @@ view: google_ads_campaign {
     convert_tz: no
     datatype: date
     sql: ${TABLE}.campaign_end_date ;;
+    hidden: no
   }
   dimension: campaign_experiment_type {
     description: "The type of campaign: normal, draft, or experiment."
@@ -96,6 +100,7 @@ view: google_ads_campaign {
     description: "The ID of the campaign."
     type: string
     sql: CAST(${TABLE}.campaign_id AS STRING) ;;
+    hidden: no
   }
   dimension: campaign_manual_cpc_enhanced_cpc_enabled {
     description: "Whether bids are to be enhanced based on conversion optimizer data."
@@ -111,6 +116,7 @@ view: google_ads_campaign {
     description: "The name of the campaign."
     type: string
     sql: ${TABLE}.campaign_name ;;
+    hidden: no
   }
   dimension: campaign_percent_cpc_enhanced_cpc_enabled {
     description: "Adjusts the bid for each auction upward or downward, depending on the likelihood of a conversion. "
@@ -129,11 +135,13 @@ view: google_ads_campaign {
     convert_tz: no
     datatype: date
     sql: ${TABLE}.campaign_start_date ;;
+    hidden: no
   }
   dimension: campaign_status {
     description: "The status of the campaign."
     type: string
     sql: ${TABLE}.campaign_status ;;
+    hidden: no
   }
   dimension: campaign_tracking_url_template {
     description: "The URL template for constructing a tracking URL."
