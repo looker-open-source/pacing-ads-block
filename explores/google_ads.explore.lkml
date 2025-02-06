@@ -49,4 +49,4 @@ explore: CampaignBasicStats {
   }
 }
 
-explore: dt_google_ads {hidden:yes}
+# explore: dt_google_ads {hidden:yes}
