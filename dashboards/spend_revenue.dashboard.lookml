@@ -88,7 +88,7 @@
     enable_conditional_formatting: false
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
-    value_format: "#,##0"
+    value_format: "#0.00"
     x_axis_gridlines: false
     y_axis_gridlines: true
     show_view_names: false
