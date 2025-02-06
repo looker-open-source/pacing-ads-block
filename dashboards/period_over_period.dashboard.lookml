@@ -9,13 +9,13 @@
   - title: Period Over Period Revenue
     name: Period Over Period Revenue
     model: pacing_block
-    explore: multisource_ads
+    explore: period_over_period
     type: looker_line
-    fields: [multisource_ads.previous_period_revenue, multisource_ads.current_period_revenue,
-      multisource_ads.period, multisource_ads.date_in_period_date]
-    pivots: [multisource_ads.period]
+    fields: [period_over_period.previous_period_revenue, period_over_period.current_period_revenue,
+      period_over_period.period, period_over_period.date_in_period_date]
+    pivots: [period_over_period.period]
     filters: {}
-    sorts: [multisource_ads.period, multisource_ads.date_in_period_date]
+    sorts: [period_over_period.period, period_over_period.date_in_period_date]
     limit: 500
     column_limit: 50
     x_axis_gridlines: false
@@ -45,16 +45,16 @@
     hidden_pivots:
       This Period|FIELD|1:
         measure_names:
-        - multisource_ads.previous_period_revenue
+        - period_over_period.previous_period_revenue
       Last Period|FIELD|2:
         measure_names:
-        - multisource_ads.current_period_revenue
+        - period_over_period.current_period_revenue
     defaults_version: 1
     hidden_series: []
     listen:
-      Ad Source: multisource_ads.ad_source
-      Current Date Range: multisource_ads.current_date_range
-      'Compare To:': multisource_ads.compare_to
+      Ad Source: period_over_period.ad_source
+      Current Date Range: period_over_period.current_date_range
+      'Compare To:': period_over_period.compare_to
     row: 0
     col: 0
     width: 12
@@ -62,14 +62,14 @@
   - title: Period Over Period Spend
     name: Period Over Period Spend
     model: pacing_block
-    explore: multisource_ads
+    explore: period_over_period
     type: looker_line
-    fields: [multisource_ads.period, multisource_ads.date_in_period_date, multisource_ads.previous_period_spend,
-      multisource_ads.current_period_spend]
-    pivots: [multisource_ads.period]
-    fill_fields: [multisource_ads.date_in_period_date]
+    fields: [period_over_period.period, period_over_period.date_in_period_date, period_over_period.previous_period_spend,
+      period_over_period.current_period_spend]
+    pivots: [period_over_period.period]
+    fill_fields: [period_over_period.date_in_period_date]
     filters: {}
-    sorts: [multisource_ads.period, multisource_ads.date_in_period_date]
+    sorts: [period_over_period.period, period_over_period.date_in_period_date]
     limit: 500
     column_limit: 50
     x_axis_gridlines: false
@@ -107,15 +107,15 @@
     hidden_pivots:
       This Period|FIELD|1:
         measure_names:
-        - multisource_ads.previous_period_spend
+        - period_over_period.previous_period_spend
       Last Period|FIELD|2:
         measure_names:
-        - multisource_ads.current_period_spend
+        - period_over_period.current_period_spend
     defaults_version: 1
     listen:
-      Ad Source: multisource_ads.ad_source
-      Current Date Range: multisource_ads.current_date_range
-      'Compare To:': multisource_ads.compare_to
+      Ad Source: period_over_period.ad_source
+      Current Date Range: period_over_period.current_date_range
+      'Compare To:': period_over_period.compare_to
     row: 0
     col: 12
     width: 12
@@ -123,14 +123,14 @@
   - title: Period Over Period Impressions
     name: Period Over Period Impressions
     model: pacing_block
-    explore: multisource_ads
+    explore: period_over_period
     type: looker_line
-    fields: [multisource_ads.period, multisource_ads.date_in_period_date, multisource_ads.previous_period_impressions,
-      multisource_ads.current_period_impressions]
-    pivots: [multisource_ads.period]
-    fill_fields: [multisource_ads.date_in_period_date]
+    fields: [period_over_period.period, period_over_period.date_in_period_date, period_over_period.previous_period_impressions,
+      period_over_period.current_period_impressions]
+    pivots: [period_over_period.period]
+    fill_fields: [period_over_period.date_in_period_date]
     filters: {}
-    sorts: [multisource_ads.period, multisource_ads.date_in_period_date]
+    sorts: [period_over_period.period, period_over_period.date_in_period_date]
     limit: 500
     column_limit: 50
     x_axis_gridlines: false
@@ -168,19 +168,19 @@
     hidden_pivots:
       This Period|FIELD|1:
         measure_names:
-        - multisource_ads.previous_period_spend
-        - multisource_ads.previous_period_clicks
-        - multisource_ads.previous_period_impressions
+        - period_over_period.previous_period_spend
+        - period_over_period.previous_period_clicks
+        - period_over_period.previous_period_impressions
       Last Period|FIELD|2:
         measure_names:
-        - multisource_ads.current_period_spend
-        - multisource_ads.current_period_clicks
-        - multisource_ads.current_period_impressions
+        - period_over_period.current_period_spend
+        - period_over_period.current_period_clicks
+        - period_over_period.current_period_impressions
     defaults_version: 1
     listen:
-      Ad Source: multisource_ads.ad_source
-      Current Date Range: multisource_ads.current_date_range
-      'Compare To:': multisource_ads.compare_to
+      Ad Source: period_over_period.ad_source
+      Current Date Range: period_over_period.current_date_range
+      'Compare To:': period_over_period.compare_to
     row: 9
     col: 12
     width: 12
@@ -188,14 +188,14 @@
   - title: Period Over Period Clicks
     name: Period Over Period Clicks
     model: pacing_block
-    explore: multisource_ads
+    explore: period_over_period
     type: looker_line
-    fields: [multisource_ads.period, multisource_ads.date_in_period_date, multisource_ads.previous_period_clicks,
-      multisource_ads.current_period_clicks]
-    pivots: [multisource_ads.period]
-    fill_fields: [multisource_ads.date_in_period_date]
+    fields: [period_over_period.period, period_over_period.date_in_period_date, period_over_period.previous_period_clicks,
+      period_over_period.current_period_clicks]
+    pivots: [period_over_period.period]
+    fill_fields: [period_over_period.date_in_period_date]
     filters: {}
-    sorts: [multisource_ads.period, multisource_ads.date_in_period_date]
+    sorts: [period_over_period.period, period_over_period.date_in_period_date]
     limit: 500
     column_limit: 50
     x_axis_gridlines: false
@@ -233,17 +233,17 @@
     hidden_pivots:
       This Period|FIELD|1:
         measure_names:
-        - multisource_ads.previous_period_spend
-        - multisource_ads.previous_period_clicks
+        - period_over_period.previous_period_spend
+        - period_over_period.previous_period_clicks
       Last Period|FIELD|2:
         measure_names:
-        - multisource_ads.current_period_spend
+        - period_over_period.current_period_spend
         - multisource_ads.current_period_clicks
     defaults_version: 1
     listen:
-      Ad Source: multisource_ads.ad_source
-      Current Date Range: multisource_ads.current_date_range
-      'Compare To:': multisource_ads.compare_to
+      Ad Source: period_over_period.ad_source
+      Current Date Range: period_over_period.current_date_range
+      'Compare To:': period_over_period.compare_to
     row: 9
     col: 0
     width: 12
@@ -297,7 +297,7 @@
   - name: Current Date Range
     title: Current Date Range
     type: field_filter
-    default_value: 2024-10
+    default_value: last 30 days
     allow_multiple_values: true
     required: false
     ui_config:
@@ -305,9 +305,9 @@
       display: popover
       options: []
     model: pacing_block
-    explore: multisource_ads
+    explore: period_over_period
     listens_to_filters: []
-    field: multisource_ads.current_date_range
+    field: period_over_period.current_date_range
   - name: 'Compare To:'
     title: 'Compare To:'
     type: field_filter
@@ -318,9 +318,9 @@
       type: dropdown_menu
       display: inline
     model: pacing_block
-    explore: multisource_ads
+    explore: period_over_period
     listens_to_filters: []
-    field: multisource_ads.compare_to
+    field: period_over_period.compare_to
   - name: Ad Source
     title: Ad Source
     type: field_filter
@@ -331,6 +331,6 @@
       type: advanced
       display: popover
     model: pacing_block
-    explore: multisource_ads
+    explore: period_over_period
     listens_to_filters: []
-    field: multisource_ads.ad_source
+    field: period_over_period.ad_source

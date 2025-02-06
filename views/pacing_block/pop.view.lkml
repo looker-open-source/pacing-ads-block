@@ -1,6 +1,6 @@
 include: "/views/pacing_block/multisource_ads.view.lkml"
-view: +multisource_ads {
-
+view: period_over_period {
+  extends: [multisource_ads]
   #fields_hidden_by_default: yes
   dimension_group: created {
     #hidden: no
