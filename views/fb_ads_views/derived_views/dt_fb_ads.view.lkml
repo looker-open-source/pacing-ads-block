@@ -1,12 +1,11 @@
 # If necessary, uncomment the line below to include explore_source.
 include: "/explores/fb_ads.explore.lkml"
+include: "/views/fb_ads_views/base_views/*.**view"
 
 view: dt_fb_ads {
   derived_table: {
 sql:
  {% if "@{FADS_DATASET_NAME}" != "" %}
-    WITH ad_insights AS (SELECT *, GENERATE_UUID() as primary_key  FROM  `looker-marketplace.@{FADS_DATASET_NAME}.AdInsights` )
-      ,  ad_insights_actions AS (SELECT *, GENERATE_UUID() as primary_key  FROM  `looker-marketplace.@{FADS_DATASET_NAME}.AdInsightsActions` )
     SELECT
         (TIMESTAMP(ad_insights.__Partitiondate )) AS partition_date_date,
         ad_insights.AdAccountId  AS ad_account_id,
@@ -18,16 +17,21 @@ sql:
         "Meta"  AS ad_source,
         ad_insights.AdId  AS ad_id,
         ad_insights.AdName  AS ad_name,
-        ROUND(COALESCE(CAST( ( SUM(DISTINCT (CAST(ROUND(COALESCE( ad_insights.Spend  ,0)*(1/1000*1.0), 9) AS NUMERIC) + (cast(cast(concat('0x', substr(to_hex(md5(CAST( ad_insights.primary_key  AS STRING))), 1, 15)) as int64) as numeric) * 4294967296 + cast(cast(concat('0x', substr(to_hex(md5(CAST( ad_insights.primary_key  AS STRING))), 16, 8)) as int64) as numeric)) * 0.000000001 )) - SUM(DISTINCT (cast(cast(concat('0x', substr(to_hex(md5(CAST( ad_insights.primary_key  AS STRING))), 1, 15)) as int64) as numeric) * 4294967296 + cast(cast(concat('0x', substr(to_hex(md5(CAST( ad_insights.primary_key  AS STRING))), 16, 8)) as int64) as numeric)) * 0.000000001) )  / (1/1000*1.0) AS NUMERIC), 0), 6) AS total_spent,
+        -- SUM(ad_insights.Spend) AS total_spent,
+        -- SUM(ad_insights.Spend) AS total_spent,
+        -- SUM(ad_insights.Impressions) AS total_impressions,
+        -- SUM(ad_insights.Clicks) AS total_clicks,
+        --SUM(ad_insights_actions.ActionValue) AS total_revenue,
+         ROUND(COALESCE(CAST( ( SUM(DISTINCT (CAST(ROUND(COALESCE( ad_insights.Spend  ,0)*(1/1000*1.0), 9) AS NUMERIC) + (cast(cast(concat('0x', substr(to_hex(md5(CAST( ad_insights.primary_key  AS STRING))), 1, 15)) as int64) as numeric) * 4294967296 + cast(cast(concat('0x', substr(to_hex(md5(CAST( ad_insights.primary_key  AS STRING))), 16, 8)) as int64) as numeric)) * 0.000000001 )) - SUM(DISTINCT (cast(cast(concat('0x', substr(to_hex(md5(CAST( ad_insights.primary_key  AS STRING))), 1, 15)) as int64) as numeric) * 4294967296 + cast(cast(concat('0x', substr(to_hex(md5(CAST( ad_insights.primary_key  AS STRING))), 16, 8)) as int64) as numeric)) * 0.000000001) )  / (1/1000*1.0) AS NUMERIC), 0), 6) AS total_spent,
         ROUND(COALESCE(CAST( ( SUM(DISTINCT (CAST(ROUND(COALESCE( ad_insights.Impressions  ,0)*(1/1000*1.0), 9) AS NUMERIC) + (cast(cast(concat('0x', substr(to_hex(md5(CAST( ad_insights.primary_key  AS STRING))), 1, 15)) as int64) as numeric) * 4294967296 + cast(cast(concat('0x', substr(to_hex(md5(CAST( ad_insights.primary_key  AS STRING))), 16, 8)) as int64) as numeric)) * 0.000000001 )) - SUM(DISTINCT (cast(cast(concat('0x', substr(to_hex(md5(CAST( ad_insights.primary_key  AS STRING))), 1, 15)) as int64) as numeric) * 4294967296 + cast(cast(concat('0x', substr(to_hex(md5(CAST( ad_insights.primary_key  AS STRING))), 16, 8)) as int64) as numeric)) * 0.000000001) )  / (1/1000*1.0) AS NUMERIC), 0), 6) AS total_impressions,
         ROUND(COALESCE(CAST( ( SUM(DISTINCT (CAST(ROUND(COALESCE( ad_insights.Clicks  ,0)*(1/1000*1.0), 9) AS NUMERIC) + (cast(cast(concat('0x', substr(to_hex(md5(CAST( ad_insights.primary_key  AS STRING))), 1, 15)) as int64) as numeric) * 4294967296 + cast(cast(concat('0x', substr(to_hex(md5(CAST( ad_insights.primary_key  AS STRING))), 16, 8)) as int64) as numeric)) * 0.000000001 )) - SUM(DISTINCT (cast(cast(concat('0x', substr(to_hex(md5(CAST( ad_insights.primary_key  AS STRING))), 1, 15)) as int64) as numeric) * 4294967296 + cast(cast(concat('0x', substr(to_hex(md5(CAST( ad_insights.primary_key  AS STRING))), 16, 8)) as int64) as numeric)) * 0.000000001) )  / (1/1000*1.0) AS NUMERIC), 0), 6) AS total_clicks,
         ROUND(COALESCE(CAST( ( SUM(DISTINCT (CAST(ROUND(COALESCE( ad_insights_actions.ActionValue  ,0)*(1/1000*1.0), 9) AS NUMERIC) + (cast(cast(concat('0x', substr(to_hex(md5(CAST( ad_insights_actions.primary_key   AS STRING))), 1, 15)) as int64) as numeric) * 4294967296 + cast(cast(concat('0x', substr(to_hex(md5(CAST( ad_insights_actions.primary_key   AS STRING))), 16, 8)) as int64) as numeric)) * 0.000000001 )) - SUM(DISTINCT (cast(cast(concat('0x', substr(to_hex(md5(CAST( ad_insights_actions.primary_key   AS STRING))), 1, 15)) as int64) as numeric) * 4294967296 + cast(cast(concat('0x', substr(to_hex(md5(CAST( ad_insights_actions.primary_key   AS STRING))), 16, 8)) as int64) as numeric)) * 0.000000001) )  / (1/1000*1.0) AS NUMERIC), 0), 6) AS total_revenue,
         COUNT(ad_insights_actions.primary_key ) AS ad_insights_actions_total_conversions
-    FROM ad_insights
-    INNER JOIN ad_insights_actions ON ad_insights.AdAccountId = ad_insights_actions.AdAccountId AND
+    FROM ${ad_insights.SQL_TABLE_NAME} AS ad_insights
+    INNER JOIN ${ad_insights_actions.SQL_TABLE_NAME} AS ad_insights_actions ON ad_insights.AdAccountId = ad_insights_actions.AdAccountId AND
               ad_insights.AdId = ad_insights_actions.AdId AND
               ad_insights.AdSetId = ad_insights_actions.AdSetId AND
-                  ad_insights.CampaignId = ad_insights_actions.CampaignId AND ad_insights.DateStart = ad_insights_actions.DateStart AND
+                  ad_insights.CampaignId = ad_insights_actions.CampaignId AND
                     ad_insights.__Partitiondate = ad_insights_actions.__Partitiondate
 
 
