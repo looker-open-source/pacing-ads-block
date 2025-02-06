@@ -267,7 +267,7 @@ dimension: primary_key {
     type: number
     sql: (${revenue}/${spend})*100 ;;
     hidden: no
-    value_format: "#0.00"
+    value_format: "#0.00%"
   }
 
   measure: conversion_rate {
