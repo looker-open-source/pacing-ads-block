@@ -1,5 +1,5 @@
 view: campaigns_information_sheets {
-  sql_table_name: `looker-marketplace.PacingDashData.@{SHEETS_CAMPAIGN_TABLE}` ;;
+  sql_table_name: `@{PROJECT_ID}.@{SHEETS_DATASET_NAME}.@{SHEETS_CAMPAIGN_TABLE}` ;;
   dimension:id  {
     primary_key: yes
     sql: ${TABLE}.ID;;

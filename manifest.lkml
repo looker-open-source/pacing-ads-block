@@ -13,10 +13,16 @@ constant: PROJECT_ID {
   export: override_required
 }
 ### For tracking Goals
+constant: SHEETS_DATASET_NAME {
+  value: "PacingDashData"
+  export: override_optional
+}
+
 constant: SHEETS_CAMPAIGN_TABLE {
   value: "campaigns_information"
   export: override_optional
 }
+
 
 ## Leave the value empty (value:"") if you're not using the source, otherwise you'll get an error
 
