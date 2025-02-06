@@ -7,7 +7,7 @@ include: "/views/fb_ads_views/derived_views/*.view.lkml"
 
 explore: ad_insights {
   description: "Ad Insights Metrics explore includes fields from Ad Insights and Ad Insights Actions"
-  label: "Ad Insights Metrics"
+  label: "Facebook Ads"
   hidden: no
   join: ad_insights_actions {
     type: inner
@@ -22,8 +22,8 @@ explore: ad_insights {
   }
 }
 
-explore: ad_accounts {hidden:yes}
+# explore: ad_accounts {hidden:yes}
 
-explore: ad_insights_actions {hidden: yes}
+# explore: ad_insights_actions {hidden: yes}
 
-explore: dt_fb_ads {hidden:yes}
+# explore: dt_fb_ads {hidden:yes}
