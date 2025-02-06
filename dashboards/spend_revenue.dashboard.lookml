@@ -848,7 +848,7 @@
   - name: Date
     title: Date
     type: field_filter
-    default_value: 2024-09
+    default_value: last 30 days
     allow_multiple_values: true
     required: false
     ui_config:
