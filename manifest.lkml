@@ -9,14 +9,20 @@ constant: CONNECTION_NAME {
 }
 
 constant: PROJECT_ID {
-  value: "your-project-id"
+  value: ""
   export: override_required
 }
 ### For tracking Goals
-constant: SHEETS_CAMPAIGN_TABLE {
-  value: "campaigns_information"
+constant: SHEETS_DATASET_NAME {
+  value: ""
   export: override_optional
 }
+
+constant: SHEETS_CAMPAIGN_TABLE {
+  value: ""
+  export: override_optional
+}
+
 
 ## Leave the value empty (value:"") if you're not using the source, otherwise you'll get an error
 

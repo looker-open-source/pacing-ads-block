@@ -24,7 +24,15 @@
     "GADS_CUSTOMER_ID": {
         "label": "Google Ads Customer ID",
         "description": "Customer ID that is associated to your current Google Ads dataset in BigQuery"
-    }
+    },
+    "SHEETS_DATASET_NAME": {
+    "label": "Google Sheets Dataset",
+    "description": "Dataset name where campaigns sheets tables is stored. Leave the value empty if you're not using the source, otherwise you'll get an error"
+    },
+    "SHEETS_CAMPAIGN_TABLE": {
+      "label": "Google Sheets Table Name",
+      "description": "Name your Google Sheets table for optional goal tracking of your campaigns. Leave the value empty if you're not using the source, otherwise you'll get an error"
+    },
   },
   "models": [
     {

@@ -3,6 +3,7 @@
 #####################################################################
 view: google_ads_customer {
   sql_table_name: `@{PROJECT_ID}.@{GADS_DATASET_NAME}.ads_Customer_@{GADS_CUSTOMER_ID}` ;;
+  fields_hidden_by_default: yes
 
   dimension_group: _data {
     type: time
@@ -27,17 +28,20 @@ view: google_ads_customer {
     description: "The currency in which the account operates."
     type: string
     sql: ${TABLE}.customer_currency_code ;;
+    hidden: no
   }
   dimension: customer_descriptive_name {
     description: "Optional, non-unique descriptive name of the customer."
     type: string
     sql: ${TABLE}.customer_descriptive_name ;;
+    hidden: no
   }
   dimension: customer_id {
     description: "The ID of the customer."
     primary_key: yes
     type: string
     sql: CAST(${TABLE}.customer_id AS STRING) ;;
+    hidden: no
   }
   dimension: customer_manager {
     description: "Whether the customer is a manager."

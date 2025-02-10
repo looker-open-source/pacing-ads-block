@@ -4,6 +4,7 @@
 
 view: google_ads_ad {
   sql_table_name: `@{PROJECT_ID}.@{GADS_DATASET_NAME}.ads_Ad_@{GADS_CUSTOMER_ID}` ;;
+  fields_hidden_by_default: yes
 
   dimension_group: _data {
     type: time
@@ -138,9 +139,10 @@ view: google_ads_ad {
   }
   dimension: ad_group_ad_ad_id {
     description: "The ID of the ad."
-    group_label: "IDs"
+    # group_label: "IDs"
     type: string
     sql: CAST(${TABLE}.ad_group_ad_ad_id AS STRING);;
+    hidden: no
   }
   dimension: ad_group_ad_ad_image_ad_image_url {
     description: "URL of the full size image."
@@ -157,17 +159,24 @@ view: google_ads_ad {
     type: string
     sql: ${TABLE}.ad_group_ad_ad_image_ad_name ;;
   }
-
+  dimension: ad_name {
+    description: "Name of the Ad"
+    type: string
+    sql: ${TABLE}.ad_group_ad_ad_name ;;
+    hidden: no
+  }
   dimension: ad_group_ad_ad_type {
     description: "The type of ad."
     type: string
     sql: ${TABLE}.ad_group_ad_ad_type ;;
+    hidden: no
   }
 
   dimension: ad_group_ad_status {
     description: "The status of the ad."
     type: string
     sql: ${TABLE}.ad_group_ad_status ;;
+    hidden: no
   }
   dimension: ad_group_id {
     description: "Output only. The ID of the ad group."

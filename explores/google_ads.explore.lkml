@@ -13,24 +13,28 @@ explore: GAds {
     sql_on: ${google_ads_customer.customer_id} = ${GAds.customer_id} ;;
     type: inner
     relationship: many_to_one
+    sql_where: ${google_ads_customer._data_date} = ${google_ads_customer._latest_date} ;;
   }
 
   join: google_ads_campaign {
     sql_on: ${google_ads_campaign.campaign_id} = ${GAds.campaign_id} ;;
     type: inner
     relationship:  many_to_one
+    sql_where: ${google_ads_campaign._data_date} = ${google_ads_campaign._latest_date} ;;
   }
 
   join: google_ads_group {
     sql_on: ${google_ads_group.ad_group_id} = ${GAds.ad_group_id} ;;
     type: inner
     relationship: many_to_one
+    sql_where: ${google_ads_group._data_date} = ${google_ads_group._latest_date} ;;
   }
 
   join: google_ads_ad {
     sql_on: ${google_ads_ad.ad_group_ad_ad_id} = ${GAds.ad_group_ad_ad_id} ;;
     type: inner
     relationship: many_to_one
+    sql_where: ${google_ads_ad._data_date} = ${google_ads_ad._latest_date} ;;
   }
 }
 
@@ -45,4 +49,4 @@ explore: CampaignBasicStats {
   }
 }
 
-explore: dt_google_ads {hidden:yes}
+# explore: dt_google_ads {hidden:yes}

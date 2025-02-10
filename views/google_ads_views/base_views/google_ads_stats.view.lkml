@@ -193,13 +193,13 @@ view: google_ads_stats {
     type: string
     sql: ${TABLE}.segments_click_type ;;
   }
-  dimension_group: segments {
+  dimension_group: ad_date {
     description: "Date to which metrics apply."
     type: time
     timeframes: [raw, date, week, month, quarter]
     convert_tz: no
     datatype: date
-    sql: ${TABLE}.segments_date ;;
+    sql: ${TABLE}._data_date;;
   }
 
 
@@ -216,25 +216,30 @@ view: google_ads_stats {
     description: "Total Spent"
     type: sum
     sql: ${metrics_cost_micros} ;;
+    value_format: "$#,##0.00"
   }
   measure: impressions {
     description: "Total Impressions"
     type: sum
     sql: ${metrics_impressions} ;;
+    value_format: "#,##0"
   }
   measure: clicks {
     description: "Total Clicks"
     type: sum
     sql: ${metrics_clicks} ;;
+    value_format: "#,##0"
   }
   measure: conversions {
     description: "Total Clicks"
     type: sum
     sql: ${metrics_conversions} ;;
+    value_format: "#,##0"
   }
   measure: revenue {
     description: "Total Revenue"
     type: sum
     sql: ${metrics_conversions_value} ;;
+    value_format: "$#,##0.00"
   }
 }

@@ -1,6 +1,6 @@
 include: "/views/pacing_block/multisource_ads.view.lkml"
-view: +multisource_ads {
-
+view: period_over_period {
+  extends: [multisource_ads]
   #fields_hidden_by_default: yes
   dimension_group: created {
     #hidden: no
@@ -33,6 +33,7 @@ view: +multisource_ads {
     sql: ${period} IS NOT NULL ;;
     convert_tz: no
     datatype: date
+
   }
 
   parameter: compare_to {
@@ -79,33 +80,67 @@ view: +multisource_ads {
   }
 
   dimension: period_2_start {
-    #hidden: no
+    hidden: no
+    label: "Previous Period Start Date"
     view_label: "Period Over Period"
-    description: "Calculates the start of the previous period"
+    description: "Calculates the start of the previous period or same equivalent date in the previous year"
     type: date
     sql:
-        {% if compare_to._parameter_value == "Period" %}
-        DATE_ADD(DATE({% date_start current_date_range %}), INTERVAL ${days_in_period} DAY)
-        {% else %}
-        DATE_SUB(DATE({% date_start current_date_range %}), INTERVAL 1 {% parameter compare_to %})
-        {% endif %};;
+      {% if compare_to._parameter_value == "Year" %}
+      DATE_SUB(DATE({% date_start current_date_range %}), INTERVAL 1 YEAR)
+      {% elsif compare_to._parameter_value == "Period" %}
+      DATE_ADD(DATE({% date_start current_date_range %}), INTERVAL ${days_in_period} DAY)
+      {% else %}
+      DATE_SUB(DATE({% date_start current_date_range %}), INTERVAL 1 {% parameter compare_to %})
+      {% endif %} ;;  # Added logic for "Year" to compare equivalent dates year-over-year
+    convert_tz: no
+  }
+
+  dimension: current_period_start {
+    hidden: no
+    label: "Current Period Start Date"
+    view_label: "Period Over Period"
+    description: "Calculates the start of the Current period"
+    type: date
+    sql:
+    {% if compare_to._parameter_value == "Period" %}
+    DATE({% date_start current_date_range %})
+    {% else %}
+    DATE({% date_start current_date_range %})
+    {% endif %};;
     convert_tz: no
   }
 
   dimension: period_2_end {
-    #hidden: no
+    hidden: no
+    label: "Previous Period End Date"
     view_label: "Period Over Period"
-    description: "Calculates the end of the previous period"
+    description: "Calculates the end of the previous period or same equivalent date in the previous year"
     type: date
     sql:
-        {% if compare_to._parameter_value == "Period" %}
-        DATE_SUB(DATE({% date_start current_date_range %}), INTERVAL 1 DAY)
-        {% else %}
-        DATE_SUB(DATE_SUB(DATE({% date_end current_date_range %}), INTERVAL 1 DAY), INTERVAL 1 {% parameter compare_to %})
-        {% endif %};;
+      {% if compare_to._parameter_value == "Year" %}
+      DATE_SUB(DATE({% date_end current_date_range %}), INTERVAL 1 YEAR)
+      {% elsif compare_to._parameter_value == "Period" %}
+      DATE_SUB(DATE({% date_start current_date_range %}), INTERVAL 1 DAY)
+      {% else %}
+      DATE_SUB(DATE_SUB(DATE({% date_end current_date_range %}), INTERVAL 1 DAY), INTERVAL 1 {% parameter compare_to %})
+      {% endif %} ;;  # Added logic for "Year" to compare equivalent dates year-over-year
     convert_tz: no
   }
-
+  dimension: current_period_end {
+    hidden: no
+    label: "Current Period End Date"
+    view_label: "Period Over Period"
+    description: "Calculates the start of the Current period"
+    type: date
+    sql:
+    {% if compare_to._parameter_value == "Period" %}
+    DATE({% date_end current_date_range %})
+    {% else %}
+    DATE({% date_end current_date_range %})
+    {% endif %};;
+    convert_tz: no
+  }
   dimension: day_in_period {
     hidden: yes
     description: "Gives the number of days since the start of each period. Use this to align the event dates onto the same axis, the axes will read 1,2,3, etc."
@@ -157,6 +192,7 @@ view: +multisource_ads {
       hour_of_day,
       day_of_week,
       day_of_week_index,
+      week,
       day_of_month,
       day_of_year,
       week_of_year,
@@ -166,6 +202,7 @@ view: +multisource_ads {
       year]
     convert_tz: no
     datatype: date
+   drill_fields: [date_in_period_year, date_in_period_month, date_in_period_week, current_metric, previous_metric]
   }
 
 
@@ -194,7 +231,7 @@ view: +multisource_ads {
 ## ---------------------- TO CREATE FILTERED MEASURES ---------------------------- ##
 
   dimension: period_filtered_measures {
-    #hidden: yes
+    hidden: yes
     description: "We just use this for the filtered measures"
     type: string
     sql:
@@ -207,8 +244,15 @@ view: +multisource_ads {
 
 # Filtered measures
 
+  measure: current_reference_date {
+    type: date
+    view_label: "Period Over Period"
+    label: "Current reference date"
+    sql: SELECT CURRENT_DATE() AS current_date; ;;
+  }
+
   measure: current_period_clicks {
-    #hidden: no
+    hidden: yes
     view_label: "Period Over Period"
     type: sum
     sql:${total_clicks};;
@@ -217,7 +261,7 @@ view: +multisource_ads {
   }
 
   measure: previous_period_clicks {
-    #hidden: no
+    hidden: yes
     view_label: "Period Over Period"
     type: sum
     sql: ${total_clicks};;
@@ -226,7 +270,7 @@ view: +multisource_ads {
   }
 
   measure: current_period_impressions {
-    #hidden: no
+    hidden: yes
     view_label: "Period Over Period"
     type: sum
     sql:${total_impressions};;
@@ -235,7 +279,7 @@ view: +multisource_ads {
   }
 
   measure: previous_period_impressions {
-    #hidden: no
+    hidden: yes
     view_label: "Period Over Period"
     type: sum
     sql: ${total_impressions};;
@@ -243,8 +287,9 @@ view: +multisource_ads {
   }
 
   measure: current_period_spend {
-    #hidden: no
+    hidden: yes
     view_label: "Period Over Period"
+    value_format: "$#,##0.00"
     type: sum
     sql:${total_spent};;
     filters: [period_filtered_measures: "this"]
@@ -252,8 +297,9 @@ view: +multisource_ads {
   }
 
   measure: previous_period_spend {
-    #hidden: no
+    hidden: yes
     view_label: "Period Over Period"
+    value_format: "$#,##0.00"
     type: sum
     sql: ${total_spent};;
     filters: [period_filtered_measures: "last"]
@@ -261,8 +307,9 @@ view: +multisource_ads {
   }
 
   measure: current_period_revenue {
-    #hidden: no
+    hidden: yes
     view_label: "Period Over Period"
+    value_format: "$#,##0.00"
     type: sum
     sql:${total_revenue};;
     filters: [period_filtered_measures: "this"]
@@ -270,8 +317,9 @@ view: +multisource_ads {
   }
 
   measure: previous_period_revenue {
-    #hidden: no
+    hidden: yes
     view_label: "Period Over Period"
+    value_format: "$#,##0.00"
     type: sum
     sql: ${total_revenue};;
     filters: [period_filtered_measures: "last"]
@@ -279,7 +327,7 @@ view: +multisource_ads {
   }
 
   measure: clicks_pop_change {
-    #hidden: no
+    hidden: yes
     view_label: "Period Over Period"
     label: "Total Clicks period-over-period % change"
     type: number
@@ -287,6 +335,159 @@ view: +multisource_ads {
             THEN NULL
             ELSE (1.0 * ${current_period_clicks} / NULLIF(${previous_period_clicks} ,0)) - 1 END ;;
     value_format_name: percent_2
+  }
+
+  measure: impressions_pop_change {
+    hidden: yes
+    view_label: "Period Over Period"
+    label: "Total Impressions period-over-period % change"
+    type: number
+    sql: CASE WHEN ${current_period_impressions} = 0
+            THEN NULL
+            ELSE (1.0 * ${current_period_impressions} / NULLIF(${previous_period_impressions} ,0)) - 1 END ;;
+    value_format_name: percent_2
+  }
+
+  measure: spend_pop_change {
+    hidden: yes
+    view_label: "Period Over Period"
+    label: "Total Spend period-over-period % change"
+    type: number
+    sql: CASE WHEN ${current_period_spend} = 0
+            THEN NULL
+            ELSE (1.0 * ${current_period_spend} / NULLIF(${previous_period_spend} ,0)) - 1 END ;;
+    value_format_name: percent_2
+  }
+
+  measure: revenue_pop_change {
+    hidden: yes
+    view_label: "Period Over Period"
+    label: "Total Revenue period-over-period % change"
+    type: number
+    sql: CASE WHEN ${current_period_revenue} = 0
+            THEN NULL
+            ELSE (1.0 * ${current_period_revenue} / NULLIF(${previous_period_revenue} ,0)) - 1 END ;;
+    value_format_name: percent_2
+  }
+
+  measure: current_metric {
+    type: number
+    view_label: "Period Over Period"
+    label:
+    "{% if metric_selector._parameter_value == 'total_impressions' %}
+    Current Impressions
+    {% elsif metric_selector._parameter_value == 'total_clicks' %}
+    Current Clicks
+    {% elsif metric_selector._parameter_value == 'total_spend' %}
+    Current Spend
+    {% elsif metric_selector._parameter_value == 'total_revenue' %}
+    Current Product Revenue
+    {% else %}
+    Current Metric
+    {% endif %}"
+    hidden: no
+    sql:
+    {% if metric_selector._parameter_value == 'total_impressions' %}
+      ${current_period_impressions}
+    {% elsif metric_selector._parameter_value == 'total_clicks' %}
+      ${current_period_clicks}
+    {% elsif metric_selector._parameter_value == 'total_spent' %}
+      ${current_period_spend}
+    {% elsif metric_selector._parameter_value == 'total_revenue' %}
+      ${current_period_revenue}
+    {% else %}
+      0
+      {% endif %} ;;
+
+    link: {
+      label: "Explore Top 20 Results"
+      url: "{{ link }}&limit=20"
+    }
+    drill_fields: [ad_source,ad_set_name,campaign_name, ad_name, current_metric]
+  }
+
+  measure: previous_metric {
+    type: number
+    view_label: "Period Over Period"
+    label:
+    "{% if metric_selector._parameter_value == 'total_impressions' %}
+    Previous Impressions
+    {% elsif metric_selector._parameter_value == 'total_clicks' %}
+    Previous Clicks
+    {% elsif metric_selector._parameter_value == 'total_spend' %}
+    Previous Spend
+    {% elsif metric_selector._parameter_value == 'total_revenue' %}
+    Previous Product Revenue
+    {% else %}
+    Previous Metric
+    {% endif %}"
+    hidden: no
+    sql:
+    {% if metric_selector._parameter_value == 'total_impressions' %}
+      ${previous_period_impressions}
+    {% elsif metric_selector._parameter_value == 'total_clicks' %}
+      ${previous_period_clicks}
+    {% elsif metric_selector._parameter_value == 'total_spent' %}
+      ${previous_period_spend}
+    {% elsif metric_selector._parameter_value == 'total_revenue' %}
+      ${previous_period_revenue}
+    {% else %}
+      0
+      {% endif %} ;;
+
+    link: {
+      label: "Explore Top 20 Results"
+      url: "{{ link }}&limit=20"
+    }
+    drill_fields: [ad_source,ad_set_name,campaign_name, ad_name, previous_metric]
+  }
+
+  measure: percentage_change {
+    type: number
+    view_label: "Period Over Period"
+    label: "% of change Current vs Previous"
+    description: "Calculates how much the current period's metric have changed compared to the previous period, as a percentage"
+    hidden: no
+    sql:
+    {% if metric_selector._parameter_value == 'total_impressions' %}
+      ${clicks_pop_change}
+    {% elsif metric_selector._parameter_value == 'total_clicks' %}
+      ${impressions_pop_change}
+    {% elsif metric_selector._parameter_value == 'total_spent' %}
+      ${spend_pop_change}
+    {% elsif metric_selector._parameter_value == 'total_revenue' %}
+      ${revenue_pop_change}
+    {% else %}
+      0
+      {% endif %} ;;
+    value_format_name: percent_2
+
+  }
+#-------------------------------Parameters-----------------------------------------------
+
+  parameter: metric_selector {
+    hidden: no
+    view_label: "Period Over Period"
+    label: "Performance Metric"
+    type: unquoted
+    description: "Field used in order to select which KPI you would like to visualize using KPI measure"
+    allowed_value: {
+      label: "Impressions"
+      value: "total_impressions"
+    }
+    allowed_value: {
+      label: "Clicks"
+      value: "total_clicks"
+    }
+
+    allowed_value: {
+      label: "Spend"
+      value: "total_spend"
+    }
+    allowed_value: {
+      label: "Product Revenue"
+      value: "total_revenue"
+    }
   }
 
 }

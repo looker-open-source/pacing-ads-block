@@ -191,7 +191,8 @@ dimension: primary_key {
     description: "Total Spent "
     type: sum
     sql: ${total_spent} ;;
-    value_format: "[>=1000000]$0.00,,\"M\";[>=1000]$0.00,\"K\";$0.00"
+    # value_format: "[>=1000000]$0.00,,\"M\";[>=1000]$0.00,\"K\";$0.00"
+    value_format_name: usd_0
     drill_fields: [ad_source,campaign_name, ad_set_name, ad_name,spend,CPM,CPC,roas]
     link: {
       label: "Explore Top 20 Results"
@@ -266,6 +267,7 @@ dimension: primary_key {
     type: number
     sql: (${revenue}/${spend})*100 ;;
     hidden: no
+    value_format: "#0.00%"
   }
 
   measure: conversion_rate {
