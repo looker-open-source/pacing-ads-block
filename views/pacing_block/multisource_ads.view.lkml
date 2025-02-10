@@ -10,7 +10,7 @@ view: multisource_ads {
   derived_table: {
     sql:
   , blank_query AS (SELECT "" as primary_key,
-  CAST("2023-10-14T22:11:20+0000"  AS TIMESTAMP) AS partition_date_date,
+  CAST("2023-10-14T22:11:20+0000"  AS TIMESTAMP) AS partition_date,
   "" AS ad_account_id,
   "" AS ad_account_name,
   "" AS campaign_id,
@@ -40,10 +40,16 @@ dimension: primary_key {
   primary_key: yes
 }
 
-  dimension: partition_date_date {
-    label: "Date"
-    type: date
+  dimension_group: partition_date {
+    label: " "
+    type: time
     description: "Date"
+    timeframes: [
+      date,
+      week,
+      month,
+      year
+    ]
   }
 
   dimension: ad_account_id {
