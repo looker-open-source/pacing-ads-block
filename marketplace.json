@@ -32,7 +32,7 @@
     "SHEETS_CAMPAIGN_TABLE": {
       "label": "Google Sheets Table Name",
       "description": "Name your Google Sheets table for optional goal tracking of your campaigns. Leave the value empty if you're not using the source, otherwise you'll get an error"
-    },
+    }
   },
   "models": [
     {
