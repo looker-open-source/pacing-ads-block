@@ -115,8 +115,9 @@ constant: GOAL_TYPE_CMP_1 {
 # Campaigns created from Google Sheets
 
 
-Based on the sheets template included in the repo as campaigns_info, create a copy in Google Sheet in order to modify the values and  [follow these steps](https://cloud.google.com/bigquery/docs/connected-sheets#use
-) to connect it to your BigQuery dataset, along the Data transfers.
+Based on the sheets template included in the repo as campaigns_info, create a copy in Google Sheet in order to modify the values and follow these steps to connect it to your BigQuery dataset, along the Data transfers.
+
+You can go to the BigQuery console, navigate to your dataset --> click on the Create table --> set Create table from to Drive --> paste the URL of your Google Sheet in the Select Drive URI field. For File Format, choose Google Sheet. In the Sheet Range field, specify the columns you want to import.
 
 It’s necessary to share the sheets template to the Service account user this is the same created to connect to your BigQuery dataset.
 
