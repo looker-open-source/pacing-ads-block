@@ -1,11 +1,11 @@
 # #################################################################
-# 
+#
 # Market Place Automation Testing Workflow
 # -> This file defines the workflow to be run on the target repo
 # -> The target repo is the repo with Looker assets to be tested
-# -> To use this workflow, you must add this file to the 
+# -> To use this workflow, you must add this file to the
 #     target repo at location /.github/workflows
-# 
+#
 # #################################################################
 
 
@@ -39,5 +39,5 @@ jobs:
         with:
           working-directory: json-tests
           name: JEST Tests                        # Name of the check run which will be created
-          path: junit.xml                         # Path to test results           path: reports/jest-*.xml    
+          path: junit.xml                         # Path to test results           path: reports/jest-*.xml
           reporter: jest-junit                    # Format of test results
