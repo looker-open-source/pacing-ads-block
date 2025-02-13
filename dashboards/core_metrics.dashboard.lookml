@@ -3,28 +3,8 @@
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
-  preferred_slug: ccNKlUQavDD4guqbKBSsZm
+  preferred_slug: GKxroCcAYps7TJidar5yi5
   elements:
-  - name: ''
-    type: text
-    title_text: ''
-    body_text: "<div style=\"border-bottom: solid 1px #4285F4;\">\n\n<nav style=\"\
-      font-size: 18px; padding: 5px 10px 0 10px; height: 60px\">\n  \n\n  <a style=\"\
-      padding: 5px 15px; border-top: solid 1px #4285F4; border-left: solid 1px #4285F4;\
-      \ border-right: solid 1px #4285F4; border-radius: 5px 5px 0 0; float: left;\
-      \ line-height: 40px; font-weight: bold; background-color: #eaf1fe;\" href=\"\
-      #\"> Core Metrics Dashboard</a>\n\n      <a style=\"padding: 5px 15px; border-bottom:\
-      \ solid 1px #4285F4; float: left; line-height: 40px;\" href=\"/dashboards-next/pacing_block::campaign_manager\"\
-      > Campaign Manager </a>\n\n\n      <a style=\"padding: 5px 15px; border-bottom:\
-      \ solid 1px #4285F4; float: left; line-height: 40px;\" href=\"/dashboards/pacing_block::campaign_comparison\"\
-      > Marketing Campaign Comparison </a>\n\n      <a style=\"padding: 5px 15px;\
-      \ border-bottom: solid 1px #4285F4; float: left; line-height: 40px;\" href=\"\
-      /dashboards/pacing_block::spend_revenue\"> Spend & Revenue </a>\n\n</nav>\n\n\
-      </div>"
-    row: 0
-    col: 0
-    width: 23
-    height: 3
   - title: New Tile
     name: New Tile
     model: pacing_block
@@ -46,10 +26,10 @@
     single_value_title: Total Clicks
     defaults_version: 1
     listen:
+      Campaign Name: multisource_ads.campaign_name
       Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
-      Campaign Name: multisource_ads.campaign_name
-    row: 3
+    row: 2
     col: 1
     width: 7
     height: 4
@@ -76,10 +56,10 @@
     defaults_version: 1
     hidden_pivots: {}
     listen:
+      Campaign Name: multisource_ads.campaign_name
       Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
-      Campaign Name: multisource_ads.campaign_name
-    row: 3
+    row: 2
     col: 8
     width: 7
     height: 4
@@ -106,10 +86,10 @@
     defaults_version: 1
     hidden_pivots: {}
     listen:
+      Campaign Name: multisource_ads.campaign_name
       Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
-      Campaign Name: multisource_ads.campaign_name
-    row: 3
+    row: 2
     col: 15
     width: 7
     height: 4
@@ -180,11 +160,11 @@
     totals_color: "#808080"
     defaults_version: 0
     listen:
+      Set Clicks Goal: multisource_ads.set_clicks_goal
+      Campaign Name: multisource_ads.campaign_name
       Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
-      Campaign Name: multisource_ads.campaign_name
-      Set Clicks Goal: multisource_ads.set_clicks_goal
-    row: 11
+    row: 10
     col: 1
     width: 7
     height: 5
@@ -261,11 +241,11 @@
     defaults_version: 0
     hidden_pivots: {}
     listen:
+      Set Conversions Goal: multisource_ads.set_conversions_goal
+      Campaign Name: multisource_ads.campaign_name
       Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
-      Campaign Name: multisource_ads.campaign_name
-      Set Conversions Goal: multisource_ads.set_conversions_goal
-    row: 11
+    row: 10
     col: 15
     width: 7
     height: 5
@@ -342,11 +322,11 @@
     defaults_version: 0
     hidden_pivots: {}
     listen:
+      Set Impressions Goal: multisource_ads.set_impressions_goal
+      Campaign Name: multisource_ads.campaign_name
       Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
-      Campaign Name: multisource_ads.campaign_name
-      Set Impressions Goal: multisource_ads.set_impressions_goal
-    row: 11
+    row: 10
     col: 8
     width: 7
     height: 5
@@ -427,11 +407,11 @@
     totals_color: "#808080"
     defaults_version: 1
     listen:
+      Set Clicks Goal: multisource_ads.set_clicks_goal
+      Campaign Name: multisource_ads.campaign_name
       Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
-      Campaign Name: multisource_ads.campaign_name
-      Set Clicks Goal: multisource_ads.set_clicks_goal
-    row: 7
+    row: 6
     col: 1
     width: 7
     height: 4
@@ -513,11 +493,11 @@
     defaults_version: 1
     hidden_pivots: {}
     listen:
+      Set Impressions Goal: multisource_ads.set_impressions_goal
+      Campaign Name: multisource_ads.campaign_name
       Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
-      Campaign Name: multisource_ads.campaign_name
-      Set Impressions Goal: multisource_ads.set_impressions_goal
-    row: 7
+    row: 6
     col: 8
     width: 7
     height: 4
@@ -600,14 +580,41 @@
     defaults_version: 1
     hidden_pivots: {}
     listen:
+      Set Conversions Goal: multisource_ads.set_conversions_goal
+      Campaign Name: multisource_ads.campaign_name
       Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
-      Campaign Name: multisource_ads.campaign_name
-      Set Conversions Goal: multisource_ads.set_conversions_goal
-    row: 7
+    row: 6
     col: 15
     width: 7
     height: 4
+  - title: _
+    name: _
+    model: pacing_block
+    explore: nav_bars
+    type: single_value
+    fields: [nav_bars.core_metrics_nav_bar]
+    sorts: [nav_bars.core_metrics_nav_bar]
+    limit: 500
+    column_limit: 50
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    defaults_version: 1
+    listen:
+      Campaign Name: nav_bars.campaign_name
+      Ad Source: nav_bars.ad_source
+      Date: nav_bars.partition_date_date
+    row: 0
+    col: 0
+    width: 24
+    height: 2
   filters:
   - name: Ad Source
     title: Ad Source

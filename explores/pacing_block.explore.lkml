@@ -12,5 +12,5 @@ explore: multisource_ads {}
 explore: forecast {}
 
 explore: period_over_period {}
-
+explore: nav_bars {hidden:yes}
 explore: training {hidden: yes}
