@@ -1,29 +1,35 @@
 include: "/views/pacing_block/shared/datagroups.lkml"
+include: "/views/pacing_block/multisource_ads.view.lkml"
 
 view: training {
 
   derived_table: {
     datagroup_trigger: weekly_refresh
-    explore_source: multisource_ads {
-      column: partition_date_date {}
-      column: ad_source {}
-      column: total_revenue {}
-
-
-    }
+    sql:
+    SELECT
+      (DATE(multisource_ads.partition_date_date)) AS date,
+      multisource_ads.ad_source AS ad_source,
+      COALESCE(SUM(multisource_ads.total_revenue), 0) AS revenue
+    FROM  ${multisource_ads.SQL_TABLE_NAME} AS multisource_ads
+    GROUP BY
+      1,
+      2 ;;
   }
-  dimension_group: partition_date_date {
-   label: "Date"
-    timeframes: [date ,week, month, year]
-    type: time
+
+  dimension: date {
+    label: "Multisource Ads Date"
+    description: "Date"
+    type: date
   }
+
   dimension: ad_source {
-    description: "Ad Source Name"
+    description: "Ads Source Name"
   }
-  measure: total_revenue {
+
+  dimension: revenue {
     description: "Total Revenue"
+    value_format: "$#,##0.00"
     type: number
-    sql: SUM(${TABLE}.total_revenue) ;;
   }
 
 }
