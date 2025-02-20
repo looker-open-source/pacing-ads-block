@@ -19,3 +19,4 @@ explore: training {hidden: yes}
 
 explore: forecast {}
 explore: model_evaluation {}
+explore: forecast_model {}
