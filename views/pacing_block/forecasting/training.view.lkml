@@ -7,7 +7,7 @@ view: training {
     datagroup_trigger: weekly_refresh
     sql:
     SELECT
-      (DATE(multisource_ads.partition_date_date)) AS date,
+      multisource_ads.partition_date_date AS date,
       multisource_ads.ad_source AS ad_source,
       COALESCE(SUM(multisource_ads.total_revenue), 0) AS revenue
     FROM  ${multisource_ads.SQL_TABLE_NAME} AS multisource_ads
@@ -24,12 +24,6 @@ view: training {
 
   dimension: ad_source {
     description: "Ads Source Name"
-  }
-
-  dimension: revenue {
-    description: "Total Revenue"
-    value_format: "$#,##0.00"
-    type: number
   }
 
 }

@@ -1,3 +1,5 @@
+include: "/views/pacing_block/forecasting/training.view.lkml"
+
 view: forecast_model {
   derived_table: {
     datagroup_trigger: weekly_refresh
@@ -9,7 +11,7 @@ view: forecast_model {
         TIME_SERIES_TIMESTAMP_COL = 'date',
         TIME_SERIES_DATA_COL = 'revenue',
         TIME_SERIES_ID_COL = 'ad_source',
-        HORIZON = 15,
+        HORIZON = 7,
         AUTO_ARIMA = TRUE,
         AUTO_ARIMA_MAX_ORDER = 5,
         DATA_FREQUENCY = 'DAILY',
@@ -26,8 +28,15 @@ view: forecast_model {
       revenue
 
       FROM ${training.SQL_TABLE_NAME}
-      WHERE date BETWEEN DATE_SUB(CURRENT_DATE(), INTERVAL 6 MONTH)
-      AND CURRENT_DATE()
+      WHERE date BETWEEN TIMESTAMP(DATE_SUB(CURRENT_DATE(), INTERVAL 6 MONTH))
+      AND TIMESTAMP(CURRENT_DATE())
       ;;
   }
+
+  parameter: horizon {
+    type: number
+    default_value: "15"
+    description: "Número de días para predecir"
+  }
+
 }

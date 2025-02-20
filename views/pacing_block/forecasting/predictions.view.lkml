@@ -1,28 +1,23 @@
-include: "/views/pacing_block/shared/datagroups.lkml"
-view: forecast {
+view: predictions {
 
   derived_table: {
     datagroup_trigger: weekly_refresh
-
+    increment_key: "date"
+    increment_offset: 3
     sql:
       SELECT
-          date,
-          ad_source,
-          revenue,
-          "history"                       AS `time_series_type`,
-          CAST(NULL AS FLOAT64)           AS `revenue_lower_bound`,
-          CAST(NULL AS FLOAT64)           AS `revenue_upper_bound`,
-          FROM ${training.SQL_TABLE_NAME}
-      UNION ALL
-      SELECT
-          date,
-          ad_source,
-          forecast_value,
-          time_series_type,
-          revenue_lower_bound,
-          revenue_upper_bound,
-      FROM ${predictions.SQL_TABLE_NAME}
-      ;;
+          prediction.forecast_timestamp date,
+          prediction.ad_source,
+          prediction.forecast_value,
+          "forecast"                                  AS time_series_type,
+          prediction.prediction_interval_lower_bound  AS revenue_lower_bound,
+          prediction.prediction_interval_upper_bound  AS revenue_upper_bound,
+      FROM ML.FORECAST(
+          MODEL ${forecast_model.SQL_TABLE_NAME},
+          STRUCT (7 AS horizon, 0.8 AS confidence_level)
+      ) AS prediction
+      WHERE {% incrementcondition %} prediction.date {% endincrementcondition %}
+    ;;
   }
 
   dimension_group: date {
@@ -41,10 +36,10 @@ view: forecast {
     sql: ${TABLE}.ad_source ;;
   }
 
-  measure: revenue {
+  measure: forecast_value {
     description: "Revenue"
     type: number
-    sql: SUM(${TABLE}.revenue) ;;
+    sql: SUM(${TABLE}.forecast_value) ;;
   }
 
   dimension: time_series_type {
