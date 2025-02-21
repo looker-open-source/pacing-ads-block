@@ -94,7 +94,6 @@ view: period_over_period {
       DATE_SUB(DATE({% date_start current_date_range %}), INTERVAL 1 {% parameter compare_to %})
       {% endif %} ;;  # Added logic for "Year" to compare equivalent dates year-over-year
     convert_tz: no
-    html: <font size="6">{{ value }}</font>;;
   }
 
   dimension: current_period_start {
@@ -110,7 +109,6 @@ view: period_over_period {
     DATE({% date_start current_date_range %})
     {% endif %};;
     convert_tz: no
-    html: <font size="6">{{ value }}</font>;;
   }
 
   dimension: period_2_end {
@@ -128,7 +126,6 @@ view: period_over_period {
       DATE_SUB(DATE_SUB(DATE({% date_end current_date_range %}), INTERVAL 1 DAY), INTERVAL 1 {% parameter compare_to %})
       {% endif %} ;;  # Added logic for "Year" to compare equivalent dates year-over-year
     convert_tz: no
-    html: <font size="6">{{ value }}</font>;;
   }
   dimension: current_period_end {
     hidden: no
@@ -143,8 +140,24 @@ view: period_over_period {
     DATE({% date_end current_date_range %})
     {% endif %};;
     convert_tz: no
-    html: <font size="6">{{ value }}</font>;;
   }
+
+  dimension: current_period {
+    type: string
+    sql: " ";;
+    html: <p style="font-size:20px"> <strong> Start:  </strong> {{ current_period_start._rendered_value }}</p>
+          <p style="font-size:20px"> <strong> End:  </strong>{{ current_period_end._rendered_value }}</p>;;
+    hidden: no
+  }
+
+  dimension: previous_period {
+    type: string
+    sql: " ";;
+    html: <p style="font-size:20px"> <strong> Start:  </strong> {{ period_2_start._rendered_value }}</p></br>
+      <p style="font-size:20px"> <strong> End:  </strong>{{ period_2_end._rendered_value }}</p>;;
+    hidden: no
+  }
+
   dimension: day_in_period {
     hidden: yes
     description: "Gives the number of days since the start of each period. Use this to align the event dates onto the same axis, the axes will read 1,2,3, etc."
@@ -491,6 +504,23 @@ view: period_over_period {
       label: "Product Revenue"
       value: "total_revenue"
     }
+  }
+
+  ###### HIDDEN FROM MULTISOURCE #############3
+  parameter: set_clicks_goal {
+    hidden: yes
+  }
+  parameter: set_impressions_goal {
+    hidden: yes
+  }
+  parameter: set_conversions_goal {
+    hidden: yes
+  }
+  parameter: set_cost_goal {
+    hidden: yes
+  }
+  parameter: KPI_select {
+    hidden: no
   }
 
 }
