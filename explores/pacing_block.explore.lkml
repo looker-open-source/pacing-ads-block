@@ -4,17 +4,11 @@
 
 
 include: "/views/pacing_block/*.view.lkml"
-include: "/views/pacing_block/forecasting/*.view.lkml"
+
 include: "./*.explore"
 
 explore: multisource_ads {}
 
-
 explore: period_over_period {}
 
 explore: nav_bars {hidden:yes}
-
-# ####### Forecast ####### #
-explore: training {hidden: yes}
-explore: forecast {}
-explore: model_evaluation {}

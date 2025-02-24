@@ -1,10 +1,9 @@
 include: "/views/pacing_block/shared/datagroups.lkml"
-include: "/views/pacing_block/multisource_ads.view.lkml"
 
 view: training {
 
   derived_table: {
-    datagroup_trigger: weekly_refresh
+    datagroup_trigger: daily_refresh
     sql:
     SELECT
       multisource_ads.partition_date_date AS date,
@@ -15,7 +14,12 @@ view: training {
       1,
       2 ;;
   }
-
+  dimension: pk {
+    type: string
+    sql: CONCAT(${date},${ad_source});;
+    primary_key: yes
+    hidden: yes
+  }
   dimension: date {
     label: "Multisource Ads Date"
     description: "Date"
@@ -24,6 +28,18 @@ view: training {
 
   dimension: ad_source {
     description: "Ads Source Name"
+  }
+
+  dimension: revenue {
+    type: number
+    hidden: yes
+  }
+
+  measure: sum_revenue {
+    type: sum
+    description: "Total Revenue"
+    sql: ${revenue} ;;
+    value_format_name: usd_0
   }
 
 }

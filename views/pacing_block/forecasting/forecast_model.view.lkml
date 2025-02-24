@@ -2,7 +2,7 @@ include: "/views/pacing_block/forecasting/training.view.lkml"
 
 view: forecast_model {
   derived_table: {
-    datagroup_trigger: weekly_refresh
+    datagroup_trigger: daily_refresh
     sql_create:
 
     CREATE OR REPLACE MODEL ${SQL_TABLE_NAME}
@@ -32,11 +32,4 @@ view: forecast_model {
       AND TIMESTAMP(CURRENT_DATE())
       ;;
   }
-
-  parameter: horizon {
-    type: number
-    default_value: "15"
-    description: "Número de días para predecir"
-  }
-
 }

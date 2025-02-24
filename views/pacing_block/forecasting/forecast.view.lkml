@@ -2,7 +2,7 @@ include: "/views/pacing_block/shared/datagroups.lkml"
 view: forecast {
 
   derived_table: {
-    datagroup_trigger: weekly_refresh
+    datagroup_trigger: daily_refresh
 
     sql:
       SELECT
@@ -41,11 +41,6 @@ view: forecast {
     sql: ${TABLE}.ad_source ;;
   }
 
-  measure: revenue {
-    description: "Revenue"
-    type: number
-    sql: SUM(${TABLE}.revenue) ;;
-  }
 
   dimension: time_series_type {
     description: "Time Series Type: History or Forecast"
@@ -53,17 +48,37 @@ view: forecast {
     sql: ${TABLE}.time_series_type ;;
   }
 
+  measure: revenue_forecast {
+    description: "Revenue"
+    type: sum
+    sql: ${TABLE}.revenue ;;
+    value_format_name: usd_0
+    filters: [time_series_type: "forecast"]
+    drill_fields: [ad_source, revenue_forecast]
+  }
+
+  measure: revenue {
+    description: "Revenue"
+    type: sum
+    sql: ${TABLE}.revenue ;;
+    value_format_name: usd_0
+    drill_fields: [ad_source, revenue_forecast]
+  }
 
   measure: revenue_lower_bound {
     description: "Revenue Lower Bound"
-    type: number
-    sql: SUM(${TABLE}.revenue_lower_bound) ;;
+    type: sum
+    sql: ${TABLE}.revenue_lower_bound ;;
+    value_format_name: usd_0
+    drill_fields: [date_date, ad_source, revenue_lower_bound]
   }
 
   measure: revenue_upper_bound {
     description: "Revenue Upper Bound"
-    type: number
-    sql: SUM(${TABLE}.revenue_upper_bound) ;;
+    type: sum
+    sql: ${TABLE}.revenue_upper_bound ;;
+    value_format_name: usd_0
+    drill_fields: [date_date, ad_source, revenue_upper_bound]
   }
 
 }

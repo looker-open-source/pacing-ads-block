@@ -1,7 +1,8 @@
+include: "/views/pacing_block/shared/datagroups.lkml"
 view: predictions {
 
   derived_table: {
-    datagroup_trigger: weekly_refresh
+    datagroup_trigger: daily_refresh
     increment_key: "date"
     increment_offset: 3
     sql:
@@ -36,10 +37,10 @@ view: predictions {
     sql: ${TABLE}.ad_source ;;
   }
 
-  measure: forecast_value {
-    description: "Revenue"
+  dimension: forecast_value {
     type: number
-    sql: SUM(${TABLE}.forecast_value) ;;
+    sql: ${TABLE}.forecast_value ;;
+    hidden: yes
   }
 
   dimension: time_series_type {
@@ -48,6 +49,11 @@ view: predictions {
     sql: ${TABLE}.time_series_type ;;
   }
 
+  measure: forecast_value_total {
+    description: "Revenue"
+    type: sum
+    sql: ${forecast_value} ;;
+  }
 
   measure: revenue_lower_bound {
     description: "Revenue Lower Bound"
