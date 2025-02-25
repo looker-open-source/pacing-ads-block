@@ -146,17 +146,18 @@ view: period_over_period {
     type: string
     sql: " ";;
     html: <p style="font-size:20px"> <strong> Start:  </strong> {{ current_period_start._rendered_value }}</p>
-          <p style="font-size:20px"> <strong> End:  </strong>{{ current_period_end._rendered_value }}</p>;;
+             <p style="font-size:20px"> <strong> End:  </strong>{{ current_period_end._rendered_value }}</p>;;
     hidden: no
+
   }
 
   dimension: previous_period {
     type: string
     sql: " ";;
     html: <p style="font-size:20px"> <strong> Start:  </strong> {{ period_2_start._rendered_value }}</p></br>
-      <p style="font-size:20px"> <strong> End:  </strong>{{ period_2_end._rendered_value }}</p>;;
+           <p style="font-size:20px"> <strong> End:  </strong>{{ period_2_end._rendered_value }}</p>;;
     hidden: no
-  }
+   }
 
   dimension: day_in_period {
     hidden: yes
@@ -199,7 +200,7 @@ view: period_over_period {
   dimension_group: date_in_period {
     #hidden: no
     description: "Use this as your grouping dimension when comparing periods. Aligns the previous periods onto the current period"
-    label: "Period"
+    label: "Current Period"
     type: time
     # sql: DATE_ADD( ${day_in_period} - 1, DATE({% date_start current_date_range %}), DAY) ;;
     sql: DATE_SUB(DATE({% date_start current_date_range %}), INTERVAL (${day_in_period} - 1) DAY)  ;;
@@ -478,6 +479,7 @@ view: period_over_period {
       0
       {% endif %} ;;
     value_format_name: percent_2
+
   }
 #-------------------------------Parameters-----------------------------------------------
 
@@ -522,5 +524,6 @@ view: period_over_period {
   parameter: KPI_select {
     hidden: no
   }
+
 
 }
