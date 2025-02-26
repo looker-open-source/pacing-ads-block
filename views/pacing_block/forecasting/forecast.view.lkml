@@ -70,7 +70,11 @@ view: forecast {
     type: sum
     sql: ${TABLE}.revenue_lower_bound ;;
     value_format_name: usd_0
-    drill_fields: [date_date, ad_source, revenue_lower_bound]
+    drill_fields: [date_date]
+    link: {
+      label: "By AdSource"
+      url: "@{viz_lower_bond_config} {{ link }}&fields=forecast.date_date,forecast.revenue_lower_bound,forecast.ad_source&pivots=forecast.ad_source&f[forecast.revenue_lower_bound]=>0&sorts=forecast.date_date&vis_config={{ vis_config | encode_uri }}"
+    }
   }
 
   measure: revenue_upper_bound {
