@@ -78,8 +78,8 @@ view: forecast {
       url: "@{viz_bond_config} {{ link }}&fields=forecast.date_date,forecast.revenue_upper_bound,forecast.ad_source&pivots=forecast.ad_source&f[forecast.revenue_upper_bound]=>0&sorts=forecast.date_date&vis_config={{ vis_config | encode_uri }}"
     }
     link: {
-      label: "By Other"
-      url: "@{viz_bond_config} {{ link }}&fields=forecast.date_date,forecast.revenue_upper_bound,forecast.ad_source&pivots=forecast.ad_source&f[forecast.revenue_upper_bound]=>0&sorts=forecast.date_date&vis_config={{ vis_config | encode_uri }}"
+      label: "By Day of Week"
+      url: "@{month_day_viz_config} {{ link }}&fields=forecast.date_month_name,forecast.revenue,forecast.date_day_of_week&pivots=forecast.date_day_of_week&fill_fields=forecast.date_day_of_week&sorts=forecast.date_day_of_week,forecast.date_month_name&vis_config={{ vis_config | encode_uri }}"
     }
   }
 
