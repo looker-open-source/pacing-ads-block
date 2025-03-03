@@ -48,23 +48,4 @@ view: predictions {
     type: string
     sql: ${TABLE}.time_series_type ;;
   }
-
-  measure: forecast_value_total {
-    description: "Revenue"
-    type: sum
-    sql: ${forecast_value} ;;
-  }
-
-  measure: revenue_lower_bound {
-    description: "Revenue Lower Bound"
-    type: number
-    sql: SUM(${TABLE}.revenue_lower_bound) ;;
-  }
-
-  measure: revenue_upper_bound {
-    description: "Revenue Upper Bound"
-    type: number
-    sql: SUM(${TABLE}.revenue_upper_bound) ;;
-  }
-
 }
