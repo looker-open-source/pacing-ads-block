@@ -2,9 +2,6 @@ include: "/views/pacing_block/shared/datagroups.lkml"
 view: predictions {
 
   derived_table: {
-    datagroup_trigger: daily_refresh
-    increment_key: "date"
-    increment_offset: 3
     sql:
       SELECT
           prediction.forecast_timestamp date,
@@ -40,7 +37,6 @@ view: predictions {
   dimension: forecast_value {
     type: number
     sql: ${TABLE}.forecast_value ;;
-    hidden: yes
   }
 
   dimension: time_series_type {
