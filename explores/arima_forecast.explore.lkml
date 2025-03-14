@@ -5,7 +5,7 @@ include: "/views/pacing_block/multisource_ads.view.lkml"
 explore: training {hidden: yes}
 explore: forecast {}
 explore: model_evaluation {}
-explore: predictions {}
+explore: predictions {hidden: yes}
 
 explore: current_vs_arima {
   from: predictions
