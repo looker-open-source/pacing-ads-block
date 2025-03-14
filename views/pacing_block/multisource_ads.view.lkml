@@ -370,8 +370,6 @@ view: multisource_ads {
 
       <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;" href="/dashboards/pacing_block::spend_revenue?Ad+Source={{ _filters["ad_source"] | url_encode }}&Campaign+Name={{ _filters["campaign_name"] | url_encode }}&Date={{_filters["partition_date_date"] | url_encode}}"> Spend & Revenue </a>
 
-      <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;" href="/dashboards/pacing_block::pop_v2?Ad+Source={{ _filters["ad_source"] | url_encode }}&Campaign+Name={{ _filters["campaign_name"] | url_encode }}"> Period Over Period </a>
-
       </nav>
 
       </div>
@@ -395,8 +393,6 @@ view: multisource_ads {
       <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;" href="/dashboards/pacing_block::campaign_comparison?Ad+Source={{ _filters["ad_source"] | url_encode }}&Campaign+Name={{ _filters["campaign_name"] | url_encode }}&Date={{_filters["partition_date_date"] | url_encode}}"> Marketing Campaign Comparison </a>
 
       <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;" href="/dashboards/pacing_block::spend_revenue?Ad+Source={{ _filters["ad_source"] | url_encode }}&Campaign+Name={{ _filters["campaign_name"] | url_encode }}&Date={{_filters["partition_date_date"] | url_encode}}"> Spend & Revenue </a>
-
-      <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;" href="/dashboards/pacing_block::pop_v2?Ad+Source={{ _filters["ad_source"] | url_encode }}&Campaign+Name={{ _filters["campaign_name"] | url_encode }}"> Period Over Period </a>
 
       </nav>
 
@@ -423,8 +419,6 @@ view: multisource_ads {
 
       <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;" href="/dashboards/pacing_block::spend_revenue?Ad+Source={{ _filters["ad_source"] | url_encode }}&Campaign+Name={{ _filters["campaign_name"] | url_encode }}&Date={{_filters["partition_date_date"] | url_encode}}"> Spend & Revenue </a>
 
-      <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;" href="/dashboards/pacing_block::pop_v2?Ad+Source={{ _filters["ad_source"] | url_encode }}&Campaign+Name={{ _filters["campaign_name"] | url_encode }}"> Period Over Period </a>
-
       </nav>
 
       </div>
@@ -450,8 +444,6 @@ view: multisource_ads {
 
       <a style="padding: 5px 15px; border-top: solid 1px #4285F4; border-left: solid 1px #4285F4; border-right: solid 1px #4285F4; border-radius: 5px 5px 0 0; float: left; line-height: 40px; font-weight: bold; background-color: #eaf1fe;" href="#"> Spend & Revenue </a>
 
-      <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;" href="/dashboards/pacing_block::pop_v2?Ad+Source={{ _filters["ad_source"] | url_encode }}&Campaign+Name={{ _filters["campaign_name"] | url_encode }}"> Period Over Period </a>
-
       </nav>
 
       </div>
@@ -476,8 +468,6 @@ view: multisource_ads {
       <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;" href="/dashboards/pacing_block::campaign_comparison?Ad+Source={{ _filters["ad_source"] | url_encode }}&Campaign+Name={{ _filters["campaign_name"] | url_encode }}&Date={{_filters["partition_date_date"] | url_encode}}"> Marketing Campaign Comparison </a>
 
       <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;" href="/dashboards/pacing_block::spend_revenue?Ad+Source={{ _filters["ad_source"] | url_encode }}&Campaign+Name={{ _filters["campaign_name"] | url_encode }}&Date={{_filters["partition_date_date"] | url_encode}}"> Spend & Revenue </a>
-
-      <a style="padding: 5px 15px; border-top: solid 1px #4285F4; border-left: solid 1px #4285F4; border-right: solid 1px #4285F4; border-radius: 5px 5px 0 0; float: left; line-height: 40px; font-weight: bold; background-color: #eaf1fe;" href="#"> Period Over Period </a>
 
       </nav>
 

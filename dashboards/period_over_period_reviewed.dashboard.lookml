@@ -1,10 +1,10 @@
 ---
-- dashboard: period_over_period_dashboard
-  title: Period Over Period Dashboard
+- dashboard: period_over_period
+  title: Period over Period
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
-  preferred_slug: lx314wTpO8TVvVXddu5Tra
+  preferred_slug: F277z5h8WwkAR44Vm60nie
   elements:
   - title: Current Period vs Previous Period
     name: Current Period vs Previous Period
@@ -12,11 +12,11 @@
     explore: period_over_period
     type: looker_line
     fields: [period_over_period.previous_metric, period_over_period.current_metric,
-      period_over_period.date_in_period_day_of_month, period_over_period.date_in_period_month_name]
-    pivots: [period_over_period.date_in_period_month_name]
+      period_over_period.date_in_period_day_of_month, period_over_period.created_month_name]
+    pivots: [period_over_period.created_month_name]
     filters:
       period_over_period.previous_metric: NOT NULL
-    sorts: [period_over_period.date_in_period_month_name, period_over_period.date_in_period_day_of_month]
+    sorts: [period_over_period.created_month_name, period_over_period.date_in_period_day_of_month]
     limit: 500
     column_limit: 50
     x_axis_gridlines: false
@@ -56,7 +56,13 @@
     show_silhouette: false
     totals_color: "#808080"
     defaults_version: 1
-    hidden_pivots: {}
+    hidden_pivots:
+      January|FIELD|1:
+        measure_names:
+        - period_over_period.current_metric
+      February|FIELD|2:
+        measure_names:
+        - period_over_period.previous_metric
     listen:
       Current Date Range: period_over_period.current_date_range
       'Compare To:': period_over_period.compare_to
@@ -193,32 +199,6 @@
     col: 0
     width: 24
     height: 8
-  - title: _
-    name: _
-    model: pacing_block
-    explore: multisource_ads
-    type: single_value
-    fields: [multisource_ads.pop_nav_bar]
-    sorts: [multisource_ads.pop_nav_bar]
-    limit: 500
-    column_limit: 50
-    custom_color_enabled: true
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    enable_conditional_formatting: false
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    defaults_version: 1
-    listen:
-      Ad Source: multisource_ads.ad_source
-      Campaign Name: multisource_ads.campaign_name
-    row: 0
-    col: 0
-    width: 24
-    height: 2
   - title: Period Difference
     name: Period Difference
     model: pacing_block
@@ -470,6 +450,30 @@
     col: 4
     width: 4
     height: 4
+  - title: "-"
+    name: "-"
+    model: pacing_block
+    explore: multisource_ads
+    type: single_value
+    fields: [multisource_ads.pop_nav_bar]
+    sorts: [multisource_ads.pop_nav_bar]
+    limit: 500
+    column_limit: 50
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    defaults_version: 1
+    listen: {}
+    row: 0
+    col: 0
+    width: 24
+    height: 2
   filters:
   - name: Ad Source
     title: Ad Source
@@ -514,7 +518,7 @@
   - name: 'Compare To:'
     title: 'Compare To:'
     type: field_filter
-    default_value: Period
+    default_value: Month
     allow_multiple_values: true
     required: true
     ui_config:
