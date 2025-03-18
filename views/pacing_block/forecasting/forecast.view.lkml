@@ -2,70 +2,109 @@ include: "/views/pacing_block/shared/datagroups.lkml"
 view: forecast {
 
   derived_table: {
-    datagroup_trigger: weekly_refresh
-    # sql specifies the SQL SELECT statement that will be used to generate
-    # this derived table as a CTE, or a subquery.
+    datagroup_trigger: daily_refresh
+
     sql:
       SELECT
-        ad_source,
-        partition_date_date,
-        total_revenue,
-        "history"                       AS `time_serie_type`,
-        CAST(NULL AS FLOAT64)           AS `total_revenue_lower_bound`,
-        CAST(NULL AS FLOAT64)           AS `total_revenue_upper_bound`,
-      FROM ${training.SQL_TABLE_NAME}
+          date,
+          ad_source,
+          revenue,
+          "history"                       AS `time_series_type`,
+          CAST(NULL AS FLOAT64)           AS `revenue_lower_bound`,
+          CAST(NULL AS FLOAT64)           AS `revenue_upper_bound`,
+          FROM ${training.SQL_TABLE_NAME}
       UNION ALL
       SELECT
-        ad_source,
-        forecast_timestamp              AS `partition_date_date`,
-        forecast_value                  AS `total_revenue`,
-        "forecast"                      AS `time_serie_type`,
-        prediction_interval_lower_bound AS `total_revenue_lower_bound`,
-        prediction_interval_upper_bound AS `total_revenue_upper_bound`,
-      FROM ML.FORECAST(
-        MODEL ${forecast_model.SQL_TABLE_NAME},
-        STRUCT(30 AS `horizon`, 0.8 AS `confidence_level`)
-      )
-    ;;
+          date,
+          ad_source,
+          forecast_value,
+          time_series_type,
+          revenue_lower_bound,
+          revenue_upper_bound,
+      FROM ${predictions.SQL_TABLE_NAME}
+      ;;
   }
 
-  dimension_group: partition_date_date {
+  dimension_group: date {
     type: time
-    # timeframes define the set of timeframe dimensions
-    # the dimension_group will produce. (accessible in the Looker Explore UI)
     timeframes: [
-      raw,
       date,
-      week,
       month,
-      quarter,
-      year
+      month_name,
+      week,
+      day_of_week,
+      day_of_week_index
     ]
-    sql: ${TABLE}.partition_date_date ;;
+    sql: ${TABLE}.date ;;
   }
 
-  dimension: time_serie_type {
+  dimension: ad_source {
+    type: string
+    sql: ${TABLE}.ad_source ;;
+  }
+
+
+  dimension: time_series_type {
     description: "Time Series Type: History or Forecast"
     type: string
-    sql: ${TABLE}.time_serie_type ;;
+    sql: ${TABLE}.time_series_type ;;
   }
 
-  measure: total_revenue {
-    description: "Total Revenue"
-    type: number
-    sql: SUM(${TABLE}.total_revenue) ;;
+  measure: revenue_forecast {
+    description: "Revenue where series_type is forecast"
+    type: sum
+    sql: ${TABLE}.revenue ;;
+    value_format_name: usd_0
+    filters: [time_series_type: "forecast"]
+    drill_fields: [ad_source, revenue_forecast]
+    link: {
+      label: "By AdSource"
+      url: "@{viz_bond_config} {{ link }}&fields=forecast.date_date,forecast.revenue_forecast,forecast.ad_source&pivots=forecast.ad_source&f[forecast.revenue_forecast]=>0&sorts=forecast.date_date&vis_config={{ vis_config | encode_uri }}"
+    }
+    link: {
+      label: "By Day of Week"
+      url: "@{month_day_viz_config} {{ link }}&fields=forecast.date_month_name,forecast.revenue,forecast.date_day_of_week&pivots=forecast.date_day_of_week&fill_fields=forecast.date_day_of_week&sorts=forecast.date_day_of_week,forecast.date_month_name&vis_config={{ vis_config | encode_uri }}"
+    }
   }
 
-  measure: total_revenue_lower_bound {
-    description: "Total Revenue Lower Bound"
-    type: number
-    sql: SUM(${TABLE}.total_revenue_lower_bound) ;;
+  measure: revenue {
+    description: "Revenue"
+    type: sum
+    sql: ${TABLE}.revenue ;;
+    value_format_name: usd_0
+    drill_fields: [date_date]
+    link: {
+      label: "By AdSource"
+      url: "@{viz_bond_config} {{ link }}&fields=forecast.date_date,forecast.revenue_upper_bound,forecast.ad_source&pivots=forecast.ad_source&f[forecast.revenue_upper_bound]=>0&sorts=forecast.date_date&vis_config={{ vis_config | encode_uri }}"
+    }
+    link: {
+      label: "By Day of Week"
+      url: "@{month_day_viz_config} {{ link }}&fields=forecast.date_month_name,forecast.revenue,forecast.date_day_of_week&pivots=forecast.date_day_of_week&fill_fields=forecast.date_day_of_week&sorts=forecast.date_day_of_week,forecast.date_month_name&vis_config={{ vis_config | encode_uri }}"
+    }
   }
 
-  measure: total_revenue_upper_bound {
-    description: "Total Revenue Upper Bound"
-    type: number
-    sql: SUM(${TABLE}.total_revenue_upper_bound) ;;
+  measure: revenue_lower_bound {
+    description: "Revenue Lower Bound"
+    type: sum
+    sql: ${TABLE}.revenue_lower_bound ;;
+    value_format_name: usd_0
+    drill_fields: [date_date]
+    link: {
+      label: "By AdSource"
+      url: "@{viz_bond_config} {{ link }}&fields=forecast.date_date,forecast.revenue_lower_bound,forecast.ad_source&pivots=forecast.ad_source&f[forecast.revenue_lower_bound]=>0&sorts=forecast.date_date&vis_config={{ vis_config | encode_uri }}"
+    }
+  }
+
+  measure: revenue_upper_bound {
+    description: "Revenue Upper Bound"
+    type: sum
+    sql: ${TABLE}.revenue_upper_bound ;;
+    value_format_name: usd_0
+    drill_fields: [date_date]
+    link: {
+      label: "By AdSource"
+      url: "@{viz_bond_config} {{ link }}&fields=forecast.date_date,forecast.revenue_upper_bound,forecast.ad_source&pivots=forecast.ad_source&f[forecast.revenue_upper_bound]=>0&sorts=forecast.date_date&vis_config={{ vis_config | encode_uri }}"
+    }
   }
 
 }

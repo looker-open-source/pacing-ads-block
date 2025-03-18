@@ -94,6 +94,7 @@ view: period_over_period {
       DATE_SUB(DATE({% date_start current_date_range %}), INTERVAL 1 {% parameter compare_to %})
       {% endif %} ;;  # Added logic for "Year" to compare equivalent dates year-over-year
     convert_tz: no
+    html: <font size="6">{{ value }}</font>;;
   }
 
   dimension: current_period_start {
@@ -109,6 +110,7 @@ view: period_over_period {
     DATE({% date_start current_date_range %})
     {% endif %};;
     convert_tz: no
+    html: <font size="6">{{ value }}</font>;;
   }
 
   dimension: period_2_end {
@@ -126,6 +128,7 @@ view: period_over_period {
       DATE_SUB(DATE_SUB(DATE({% date_end current_date_range %}), INTERVAL 1 DAY), INTERVAL 1 {% parameter compare_to %})
       {% endif %} ;;  # Added logic for "Year" to compare equivalent dates year-over-year
     convert_tz: no
+    html: <font size="6">{{ value }}</font>;;
   }
   dimension: current_period_end {
     hidden: no
@@ -140,6 +143,7 @@ view: period_over_period {
     DATE({% date_end current_date_range %})
     {% endif %};;
     convert_tz: no
+    html: <font size="6">{{ value }}</font>;;
   }
   dimension: day_in_period {
     hidden: yes
@@ -182,7 +186,7 @@ view: period_over_period {
   dimension_group: date_in_period {
     #hidden: no
     description: "Use this as your grouping dimension when comparing periods. Aligns the previous periods onto the current period"
-    label: "Current Period"
+    label: "Period"
     type: time
     # sql: DATE_ADD( ${day_in_period} - 1, DATE({% date_start current_date_range %}), DAY) ;;
     sql: DATE_SUB(DATE({% date_start current_date_range %}), INTERVAL (${day_in_period} - 1) DAY)  ;;
@@ -461,7 +465,6 @@ view: period_over_period {
       0
       {% endif %} ;;
     value_format_name: percent_2
-
   }
 #-------------------------------Parameters-----------------------------------------------
 

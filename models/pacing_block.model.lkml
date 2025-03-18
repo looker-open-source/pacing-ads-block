@@ -1,8 +1,11 @@
 connection: "@{CONNECTION_NAME}"
-include: "/explores/pacing_block.explore.lkml"
+
+include: "/views/pacing_block/forecasting/*.view.lkml"
 include: "/views/pacing_block/multisource_ads.view.lkml"
 include: "/explores/goals_campaigns.explore.lkml"
-include: "/views/pacing_block/forecasting/*.view.lkml"
+include: "/explores/pacing_block.explore.lkml"
+
+
 include: "/dashboards/*.dashboard.lookml"
 
 

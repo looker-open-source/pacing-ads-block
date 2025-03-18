@@ -1,10 +1,9 @@
----
 - dashboard: spend_revenue
   title: Spend & Revenue
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
-  preferred_slug: cUdHT1pOiRxrtZztVAQhNz
+  preferred_slug: DTE2rkeiGY8WcwcAvS0VJy
   elements:
   - title: Product Revenue
     name: Product Revenue
@@ -53,9 +52,9 @@
     hidden_pivots: {}
     defaults_version: 1
     listen:
+      Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
-      Ad Source: multisource_ads.ad_source
     row: 4
     col: 0
     width: 6
@@ -116,9 +115,9 @@
     hidden_pivots: {}
     defaults_version: 1
     listen:
+      Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
-      Ad Source: multisource_ads.ad_source
     row: 4
     col: 18
     width: 6
@@ -170,9 +169,9 @@
     hidden_pivots: {}
     defaults_version: 1
     listen:
+      Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
-      Ad Source: multisource_ads.ad_source
     row: 4
     col: 6
     width: 6
@@ -224,9 +223,9 @@
     hidden_pivots: {}
     defaults_version: 1
     listen:
+      Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
-      Ad Source: multisource_ads.ad_source
     row: 4
     col: 12
     width: 6
@@ -278,9 +277,9 @@
     hidden_pivots: {}
     defaults_version: 1
     listen:
+      Ad Source: multisource_ads.ad_source
       Date: multisource_ads.partition_date_date
       Campaign Name: multisource_ads.campaign_name
-      Ad Source: multisource_ads.ad_source
     row: 8
     col: 12
     width: 7
@@ -336,9 +335,9 @@
     hidden_pivots: {}
     defaults_version: 1
     listen:
-      Campaign Name: multisource_ads.campaign_name
-      Date: multisource_ads.partition_date_date
       Ad Source: multisource_ads.ad_source
+      Date: multisource_ads.partition_date_date
+      Campaign Name: multisource_ads.campaign_name
     row: 12
     col: 0
     width: 24
@@ -424,9 +423,9 @@
     hidden_pivots: {}
     defaults_version: 1
     listen:
-      Campaign Name: multisource_ads.campaign_name
-      Date: multisource_ads.partition_date_date
       Ad Source: multisource_ads.ad_source
+      Date: multisource_ads.partition_date_date
+      Campaign Name: multisource_ads.campaign_name
     row: 31
     col: 0
     width: 11
@@ -507,9 +506,9 @@
     hidden_pivots: {}
     defaults_version: 1
     listen:
-      Campaign Name: multisource_ads.campaign_name
-      Date: multisource_ads.partition_date_date
       Ad Source: multisource_ads.ad_source
+      Date: multisource_ads.partition_date_date
+      Campaign Name: multisource_ads.campaign_name
     row: 24
     col: 0
     width: 11
@@ -591,9 +590,9 @@
     hidden_pivots: {}
     defaults_version: 1
     listen:
-      Campaign Name: multisource_ads.campaign_name
-      Date: multisource_ads.partition_date_date
       Ad Source: multisource_ads.ad_source
+      Date: multisource_ads.partition_date_date
+      Campaign Name: multisource_ads.campaign_name
     row: 24
     col: 11
     width: 13
@@ -675,9 +674,9 @@
     hidden_pivots: {}
     defaults_version: 1
     listen:
-      Campaign Name: multisource_ads.campaign_name
-      Date: multisource_ads.partition_date_date
       Ad Source: multisource_ads.ad_source
+      Date: multisource_ads.partition_date_date
+      Campaign Name: multisource_ads.campaign_name
     row: 31
     col: 11
     width: 13
@@ -776,9 +775,9 @@
     hidden_pivots: {}
     defaults_version: 1
     listen:
-      Campaign Name: multisource_ads.campaign_name
-      Date: multisource_ads.partition_date_date
       Ad Source: multisource_ads.ad_source
+      Date: multisource_ads.partition_date_date
+      Campaign Name: multisource_ads.campaign_name
     row: 38
     col: 0
     width: 24
@@ -803,30 +802,36 @@
     value_format: 0.00%
     defaults_version: 1
     listen:
-      Campaign Name: multisource_ads.campaign_name
-      Date: multisource_ads.partition_date_date
       Ad Source: multisource_ads.ad_source
+      Date: multisource_ads.partition_date_date
+      Campaign Name: multisource_ads.campaign_name
     row: 8
     col: 5
     width: 7
     height: 4
-  - name: " (3)"
-    type: text
-    title_text: ''
-    subtitle_text: ''
-    body_text: "<div style=\"border-bottom: solid 1px #4285F4;\">\n\n<nav style=\"\
-      font-size: 18px; padding: 5px 10px 0 10px; height: 60px\">\n  \n\n <a style=\"\
-      padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height:\
-      \ 40px;\" href=\"/dashboards/pacing_block::core_metrics\"> Core Metrics Dashboard</a>\n\
-      \n      <a style=\"padding: 5px 15px; border-bottom: solid 1px #4285F4; float:\
-      \ left; line-height: 40px;\" href=\"/dashboards-next/pacing_block::campaign_manager\"\
-      > Campaign Manager </a>\n\n\n      <a style=\"padding: 5px 15px; border-bottom:\
-      \ solid 1px #4285F4; float: left; line-height: 40px;\" href=\"/dashboards/pacing_block::campaign_comparison\"\
-      > Marketing Campaign Comparison </a>\n\n\n  <a style=\"padding: 5px 15px; border-top:\
-      \ solid 1px #4285F4; border-left: solid 1px #4285F4; border-right: solid 1px\
-      \ #4285F4; border-radius: 5px 5px 0 0; float: left; line-height: 40px; font-weight:\
-      \ bold; background-color: #eaf1fe;\" href=\"#\"> Spend & Revenue</a>\n\n</nav>\n\
-      \n</div>"
+  - title: _
+    name: _
+    model: pacing_block
+    explore: nav_bars
+    type: single_value
+    fields: [nav_bars.spend_revenue_nav_bar]
+    sorts: [nav_bars.spend_revenue_nav_bar]
+    limit: 500
+    column_limit: 50
+    custom_color_enabled: true
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    defaults_version: 1
+    listen:
+      Ad Source: nav_bars.ad_source
+      Date: nav_bars.partition_date_date
+      Campaign Name: nav_bars.campaign_name
     row: 0
     col: 0
     width: 24
@@ -854,6 +859,7 @@
     ui_config:
       type: advanced
       display: popover
+      options: []
     model: pacing_block
     explore: multisource_ads
     listens_to_filters: []

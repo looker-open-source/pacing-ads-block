@@ -9,36 +9,36 @@ view: multisource_ads {
 
   derived_table: {
     sql:
-  , blank_query AS (SELECT "" as primary_key,
-  CAST("2023-10-14T22:11:20+0000"  AS TIMESTAMP) AS partition_date_date,
-  "" AS ad_account_id,
-  "" AS ad_account_name,
-  "" AS campaign_id,
-  "" AS campaign_name,
-  "" AS ad_set_id,
-  "" AS ad_set_name,
-  "" AS ad_source,
-  "" AS ad_id,
-  "" AS ad_name,
-  0 AS total_spent,
-  0 AS total_impressions,
-  0 AS total_clicks,
-  0 AS total_revenue,
-  0 AS total_conversions)
+      , blank_query AS (SELECT "" as primary_key,
+      CAST("2023-10-14T22:11:20+0000"  AS TIMESTAMP) AS partition_date_date,
+      "" AS ad_account_id,
+      "" AS ad_account_name,
+      "" AS campaign_id,
+      "" AS campaign_name,
+      "" AS ad_set_id,
+      "" AS ad_set_name,
+      "" AS ad_source,
+      "" AS ad_id,
+      "" AS ad_name,
+      0 AS total_spent,
+      0 AS total_impressions,
+      0 AS total_clicks,
+      0 AS total_revenue,
+      0 AS total_conversions)
 
-  SELECT * FROM blank_query WHERE false
+      SELECT * FROM blank_query WHERE false
       UNION ALL
-  SELECT GENERATE_UUID() AS primary_key, * FROM ${dt_fb_ads.SQL_TABLE_NAME} WHERE "@{FADS_DATASET_NAME}" != ""
+      SELECT GENERATE_UUID() AS primary_key, * FROM ${dt_fb_ads.SQL_TABLE_NAME} WHERE "@{FADS_DATASET_NAME}" != ""
       UNION ALL
-  SELECT  GENERATE_UUID() AS primary_key,  * FROM ${dt_google_ads.SQL_TABLE_NAME} WHERE "@{GADS_DATASET_NAME}" != "" ;;
+      SELECT  GENERATE_UUID() AS primary_key,  * FROM ${dt_google_ads.SQL_TABLE_NAME} WHERE "@{GADS_DATASET_NAME}" != "" ;;
 
-datagroup_trigger: daily
+    datagroup_trigger: daily
   }
-drill_fields: [details*]
-dimension: primary_key {
-  hidden: yes
-  primary_key: yes
-}
+  drill_fields: [details*]
+  dimension: primary_key {
+    hidden: yes
+    primary_key: yes
+  }
 
   dimension: partition_date_date {
     label: "Date"
@@ -348,5 +348,6 @@ dimension: primary_key {
       count
     ]
   }
+
 
 }
