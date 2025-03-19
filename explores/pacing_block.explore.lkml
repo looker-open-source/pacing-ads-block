@@ -11,4 +11,5 @@ explore: multisource_ads {}
 
 explore: period_over_period {}
 
+# explore: training {hidden: yes}
 explore: nav_bars {hidden:yes}

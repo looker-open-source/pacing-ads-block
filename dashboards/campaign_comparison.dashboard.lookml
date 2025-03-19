@@ -190,10 +190,10 @@
   - title: _
     name: _
     model: pacing_block
-    explore: nav_bars
+    explore: multisource_ads
     type: single_value
-    fields: [nav_bars.campaign_comparison_nav_bar]
-    sorts: [nav_bars.campaign_comparison_nav_bar]
+    fields: [multisource_ads.campaign_comparison_nav_bar]
+    sorts: [multisource_ads.campaign_comparison_nav_bar]
     limit: 500
     column_limit: 50
     custom_color_enabled: true
@@ -207,9 +207,9 @@
     conditional_formatting_include_nulls: false
     defaults_version: 1
     listen:
-      Campaign Name: nav_bars.campaign_name
-      Ad Source: nav_bars.ad_source
-      Date: nav_bars.partition_date_date
+      Campaign Name: multisource_ads.campaign_name
+      Ad Source: multisource_ads.ad_source
+      Date: multisource_ads.partition_date_date
     row: 0
     col: 0
     width: 24
