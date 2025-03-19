@@ -30,7 +30,7 @@ view: dt_google_ads {
     INNER JOIN ${google_ads_campaign.SQL_TABLE_NAME} AS google_ads_campaign ON (CAST(google_ads_campaign.campaign_id AS STRING)) = (CAST(GAds.campaign_id AS STRING))
     INNER JOIN ${google_ads_group.SQL_TABLE_NAME}  AS google_ads_group ON (CAST(google_ads_group.ad_group_id AS STRING)) = (CAST(GAds.ad_group_id AS STRING))
     INNER JOIN ${google_ads_ad.SQL_TABLE_NAME}  AS google_ads_ad ON (CAST(google_ads_ad.ad_group_ad_ad_id AS STRING)) = (CAST(GAds.ad_group_ad_ad_id AS STRING))
-    WHERE (google_ads_campaign.campaign_status ) = 'ENABLED' AND (google_ads_customer._DATA_DATE = google_ads_customer._LATEST_DATE  AND google_ads_campaign._DATA_DATE = google_ads_campaign._LATEST_DATE  AND google_ads_group._DATA_DATE = google_ads_group._LATEST_DATE  AND google_ads_ad._DATA_DATE = google_ads_ad._LATEST_DATE )
+    WHERE (google_ads_campaign.campaign_status ) = 'ENABLED' AND (google_ads_customer._DATA_DATE = google_ads_customer._LATEST_DATE  AND google_ads_campaign._DATA_DATE = google_ads_campaign._LATEST_DATE  AND google_ads_group._DATA_DATE = google_ads_group._LATEST_DATE  AND google_ads_ad._DATA_DATE = google_ads_ad._LATEST_DATE ) AND (GAds.segments_ad_network_type NOT IN ('UNKNOWN','UNSPECIFIED') )
     GROUP BY
         1,
         2,
