@@ -5,8 +5,8 @@
   description: ''
   preferred_slug: DTE2rkeiGY8WcwcAvS0VJy
   elements:
-  - title: Product Revenue
-    name: Product Revenue
+  - title: Revenue
+    name: Revenue
     model: pacing_block
     explore: multisource_ads
     type: single_value
