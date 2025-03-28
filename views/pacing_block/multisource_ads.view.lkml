@@ -181,7 +181,7 @@ view: multisource_ads {
       value: "total_spent"
     }
     allowed_value: {
-      label: "Product Revenue"
+      label: "Revenue"
       value: "total_revenue"
     }
   }
