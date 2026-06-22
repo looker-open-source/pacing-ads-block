@@ -1,6 +1,6 @@
 # How to contribute
 
-We'd love to accept your patches and contributions to this project.
+THIS PROJECT DOES NOT ACCEPT PATCHES OR CONTRIBUTIONS.
 
 ## Before you begin
 
